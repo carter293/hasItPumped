@@ -1,0 +1,1 @@
+# fraudbuster-rug-pull-detector
