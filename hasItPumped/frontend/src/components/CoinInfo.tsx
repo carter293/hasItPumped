@@ -15,7 +15,7 @@ export const CoinInfo = ({ activeToken, metadata }: props) => {
         <CardHeader>
             <div className="flex justify-between items-center">
                 <div>
-                    <Image src={metadata.imageUrl} width={100} height={100} alt={''} />
+                    <Image src={`${metadata.imageUrl}?img-width=256`} width={100} height={100} alt={''} />
                     <CardTitle className="font-mono text-xl mb-2 mt-2 text-white">
                         {metadata.name}
                     </CardTitle>

@@ -274,7 +274,7 @@ export default function Home() {
       <section className="w-full bg-stone-900">
         <div className="container px-4 max-w-5xl mx-auto">
 
-{/* Token Analysis Result */}
+          {/* Token Analysis Result */}
           <div ref={resultRef}>
             {/* Show analysis section when loading or when we have token data */}
             {(loading || activeToken) && (
@@ -282,28 +282,26 @@ export default function Home() {
                 <h2 className="text-2xl font-bold mb-6 text-white">token analysis</h2>
                 <Card className="bg-zinc-800 border-gray-700 overflow-hidden">
                   {/* Show loading skeleton when loading, otherwise show CoinInfo */}
-                  {loading || !meta || metaLoading || !activeToken ? (
-                    <div className="p-6 border-b border-gray-700">
-                      <div className="flex items-center gap-4">
-                        <Skeleton className="h-12 w-12 rounded-full bg-gray-700" />
-                        <div className="space-y-2">
-                          <Skeleton className="h-6 w-40 bg-gray-700" />
-                          <Skeleton className="h-4 w-24 bg-gray-700" />
-                        </div>
-                        <div className="ml-auto flex-col items-end">
-                          <Skeleton className="h-6 w-28 bg-gray-700 mb-2" />
-                          <Skeleton className="h-4 w-20 bg-gray-700" />
-                        </div>
-                      </div>
-                      <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
-                        {[1, 2, 3, 4].map(i => (
-                          <div key={i} className="p-3 bg-zinc-700/50 rounded-lg">
-                            <Skeleton className="h-4 w-20 bg-gray-700 mb-2" />
-                            <Skeleton className="h-6 w-16 bg-gray-700" />
+                  {loading || !activeToken || !meta || metaLoading  ? (
+                    <CardHeader>
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <Skeleton className="h-24 w-24 bg-gray-700 rounded-md" /> {/* Token image */}
+                          <Skeleton className="h-7 w-48 bg-gray-700 mt-2 mb-2" /> {/* Token name */}
+                          <div className="flex flex-col gap-1">
+                            <Skeleton className="h-5 w-20 bg-gray-700" /> {/* Token symbol */}
+                            <div className="flex items-center gap-2">
+                              <Skeleton className="h-4 w-4 bg-gray-700" /> {/* Link icon */}
+                              <Skeleton className="h-4 w-56 bg-gray-700" /> {/* Token address */}
+                            </div>
                           </div>
-                        ))}
+                        </div>
+                        <div className="text-right">
+                          <Skeleton className="h-10 w-48 bg-gray-700 rounded-full mb-1" /> {/* Status badge */}
+                          <Skeleton className="h-4 w-32 bg-gray-700 ml-auto" /> {/* Confidence */}
+                        </div>
                       </div>
-                    </div>
+                    </CardHeader>
                   ) : (
                     <CoinInfo activeToken={activeToken} metadata={meta} />
                   )}
@@ -312,10 +310,29 @@ export default function Home() {
                   <CardContent>
                     {loading || (metaLoading && !meta?.poolAddress) ? (
                       <div className="mt-6 space-y-8">
-                        {/* Chart loading skeleton */}
-                        <div className="p-4 flex flex-col items-center justify-center">
-                          <div className="w-full h-64 bg-zinc-700/50 rounded-lg flex items-center justify-center">
-                            <Loader2 className="h-10 w-10 text-gray-500 animate-spin" />
+                        {/* Chart loading skeleton - matching the iframe dimensions */}
+                        <div className="relative w-full" style={{ minHeight: "600px" }}>
+                          <div className="absolute inset-0 bg-zinc-700/30 rounded-lg flex flex-col items-center justify-center">
+                            <Loader2 className="h-16 w-16 text-gray-500 animate-spin mb-4" />
+                            <div className="text-gray-400 text-sm">Loading chart data...</div>
+
+                            {/* Simulated chart skeleton with gradient lines */}
+                            <div className="absolute inset-0 overflow-hidden opacity-20">
+                              <div className="w-full h-full flex flex-col justify-end">
+                                <div className="h-1/2 w-full relative">
+                                  <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+                                  <div className="absolute bottom-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+                                  <div className="absolute bottom-2/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+                                  <div className="absolute bottom-3/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+                                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+
+                                  {/* Vertical grid lines */}
+                                  <div className="absolute top-0 bottom-0 left-1/4 w-px bg-gradient-to-b from-transparent via-gray-400 to-transparent"></div>
+                                  <div className="absolute top-0 bottom-0 left-2/4 w-px bg-gradient-to-b from-transparent via-gray-400 to-transparent"></div>
+                                  <div className="absolute top-0 bottom-0 left-3/4 w-px bg-gradient-to-b from-transparent via-gray-400 to-transparent"></div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
 
