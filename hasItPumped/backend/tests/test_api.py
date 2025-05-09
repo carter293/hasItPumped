@@ -111,36 +111,6 @@ def test_stats_endpoint(test_db, sample_token_data):
     assert len(data["recent_tokens"]) == 1
     assert data["recent_tokens"][0]["mint_address"] == sample_token_data["mint_address"]
 
-def test_get_token_endpoint(test_db, sample_token_data):
-    """Test the get token endpoint"""
-    # Insert sample data
-    db = TestingSessionLocal()
-    insert_sample_data(db, sample_token_data)
-    db.close()
-    
-    # Test endpoint
-    mint_address = sample_token_data["mint_address"]
-    response = client.get(f"/token/{mint_address}")
-    assert response.status_code == 200
-    data = response.json()
-    
-    # Validate response structure
-    assert data["mint_address"] == mint_address
-    assert "data" in data
-    assert "is_pre_peak" in data
-    assert "confidence" in data
-    assert "days_of_data" in data
-    
-    # Check specific values
-    assert len(data["data"]) == 5
-    assert data["days_of_data"] == 5
-
-def test_get_token_not_found(test_db):
-    """Test get token endpoint with nonexistent token"""
-    response = client.get("/token/nonexistent_token")
-    assert response.status_code == 404
-    assert "detail" in response.json()
-
 @patch("app.get_solana_dex_trade_data")
 def test_analyze_token_endpoint(mock_get_data, test_db, sample_token_data):
     """Test the analyze token endpoint"""

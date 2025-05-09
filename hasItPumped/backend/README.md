@@ -84,7 +84,6 @@ docker run -p 8000:8000 -v $(pwd)/data:/app/data solana-token-api
 
 - `GET /` - Health check
 - `GET /stats` - Get database statistics
-- `GET /token/{mint_address}` - Get token data from database
 - `POST /analyze_token` - Analyze a token (fetches latest data if needed)
 
 ### Example Requests
@@ -95,12 +94,6 @@ Analyze a token:
 curl -X POST "http://localhost:8000/analyze_token" \
      -H "Content-Type: application/json" \
      -d '{"mint_address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"}'
-```
-
-Get token data:
-
-```bash
-curl "http://localhost:8000/token/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
 ```
 
 ## Testing

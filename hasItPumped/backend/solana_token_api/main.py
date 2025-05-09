@@ -227,46 +227,6 @@ async def analyze_token(
         days_of_data=len(token_data)
     )
 
-@app.get("/token/{mint_address}", response_model=TokenResponse)
-def get_token(mint_address: str, db: Session = Depends(get_db)):
-    """Get token data if it exists in the database"""
-    logger.info(f"Fetching token data for: {mint_address}")
-    
-    existing_data = db.query(TokenData).filter(
-        TokenData.mint_address == mint_address
-    ).order_by(TokenData.date.desc()).all()
-    
-    if not existing_data:
-        logger.warning(f"Token not found: {mint_address}")
-        raise HTTPException(status_code=404, detail="Token not found in database")
-    
-    # Get latest pre_peak status
-    is_pre_peak = existing_data[0].is_pre_peak
-    if is_pre_peak is None:
-        # If status not available, compute it
-        logger.info(f"Status not available for {mint_address}, computing...")
-        return analyze_token(TokenRequest(mint_address=mint_address), BackgroundTasks(), db=db)
-    
-    token_data = [
-        TokenDataPoint(
-            date=data.date.isoformat(),
-            open=data.open,
-            high=data.high,
-            low=data.low,
-            close=data.close,
-            volume=data.volume
-        )
-        for data in existing_data
-    ]
-    
-    return TokenResponse(
-        mint_address=mint_address,
-        data=token_data,
-        is_pre_peak=is_pre_peak,
-        confidence=0.8,  # We don't store confidence in DB, using a placeholder
-        days_of_data=len(token_data)
-    )
-
 # For running the app directly
 if __name__ == "__main__":
     import uvicorn

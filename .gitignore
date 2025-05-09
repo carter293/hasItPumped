@@ -2,3 +2,5 @@ venv
 .DS_Store
 hasItPumped/backend/.env
 **/*.pyc
+**/*.log
+**/*.db
