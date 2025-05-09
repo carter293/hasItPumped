@@ -1,7 +1,5 @@
-"""
-Setup script for Solana Token Analysis API.
-This script handles both package installation and database initialization.
-"""
+
+
 import os
 import json
 import argparse
@@ -9,31 +7,11 @@ import logging
 from datetime import datetime
 from pathlib import Path
 from setuptools import setup, find_packages
-
-# Only import these when running as a script, not during installation
-if __name__ == "__main__":
-    try:
-        from dotenv import load_dotenv
-        # Import relative to the src directory
-        import sys
-        sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'src')))
-        from solana_token_api.models.database import init_db, SessionLocal, TokenData
-        from solana_token_api.utils.logger import setup_logger
-    except ImportError:
-        # During installation, these won't be available yet
-        pass
-
-# Package setup for pip install
-setup(
-    name="solana_token_api",
-    version="1.0.0",
-    description="Solana Token Analysis API",
-    author="Solana Token API Team",
-    package_dir={"": "src"},
-    packages=find_packages(where="src"),
-    python_requires=">=3.8",
-    include_package_data=True,
-)
+from dotenv import load_dotenv
+import sys
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'src')))
+from solana_token_api.models.database import init_db, SessionLocal, TokenData
+from solana_token_api.utils.logger import setup_logger
 
 def parse_args():
     """Parse command line arguments"""
@@ -132,10 +110,10 @@ if __name__ == "__main__":
     load_dotenv()
     
     # Create logs directory if it doesn't exist
-    Path("logs").mkdir(exist_ok=True)
+    Path("solana_token_api/logs").mkdir(exist_ok=True)
     
     # Create data directory if it doesn't exist
-    Path("data").mkdir(exist_ok=True)
+    Path("solana_token_api/data").mkdir(exist_ok=True)
     
     # Set up logging
     logger = setup_logger("setup")

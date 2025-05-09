@@ -1,21 +1,25 @@
 """
 Pydantic models for request/response validation and serialization.
 """
+
 from typing import Dict, List, Optional
+
 from pydantic import BaseModel, Field
 
 
 class TokenRequest(BaseModel):
     """Request model for analyzing a token"""
+
     mint_address: str = Field(
-        ..., 
+        ...,
         description="Solana token mint address",
-        example="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+        example="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
     )
 
 
 class TokenDataPoint(BaseModel):
     """Model for token price data point"""
+
     date: str
     open: float
     high: float
@@ -26,11 +30,13 @@ class TokenDataPoint(BaseModel):
 
 class PoolResponse(BaseModel):
     """Response model for pool information"""
+
     pool_address: str
 
 
 class TokenResponse(BaseModel):
     """Response model for token analysis"""
+
     mint_address: str
     data: List[TokenDataPoint]
     is_pre_peak: bool
@@ -40,6 +46,7 @@ class TokenResponse(BaseModel):
 
 class TokenSummary(BaseModel):
     """Summary model for token information"""
+
     mint_address: str
     last_updated: str
     is_pre_peak: bool
@@ -50,6 +57,7 @@ class TokenSummary(BaseModel):
 
 class DatabaseStats(BaseModel):
     """Response model for database statistics"""
+
     total_tokens: int
     pre_peak_count: int
     post_peak_count: int
