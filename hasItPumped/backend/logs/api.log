@@ -1,0 +1,549 @@
+2025-05-06 17:10:43,974 [INFO] Model loaded from model.ubj
+2025-05-06 17:12:25,951 [INFO] Model loaded from model.ubj
+2025-05-06 17:16:44,251 [INFO] Model loaded from model.ubj
+2025-05-06 17:20:34,179 [INFO] Model loaded from model.ubj
+2025-05-06 17:26:51,742 [INFO] Analyzing token: 14aFmu7R2AH9hDheGfXKj1qJ4mMfEFpqoSyGgMnDpump
+2025-05-06 17:26:51,748 [INFO] Using existing data for 14aFmu7R2AH9hDheGfXKj1qJ4mMfEFpqoSyGgMnDpump, last date: 2025-05-03
+2025-05-06 17:28:45,664 [INFO] Analyzing token: 7AJ1KjzjstMnQGzZk1HAKx2atmvvRqWvmRbdYmnviryq
+2025-05-06 17:28:45,666 [INFO] Using existing data for 7AJ1KjzjstMnQGzZk1HAKx2atmvvRqWvmRbdYmnviryq, last date: 2025-05-03
+2025-05-06 17:29:25,664 [INFO] Analyzing token: 3ZosKPe3FoaJsjHLPBejf5d8PizSFTorStj4gmJs7Dk9
+2025-05-06 17:29:25,665 [INFO] Fetching new data for 3ZosKPe3FoaJsjHLPBejf5d8PizSFTorStj4gmJs7Dk9
+2025-05-06 17:31:01,931 [INFO] Model loaded from model.ubj
+2025-05-06 17:31:03,646 [INFO] Model loaded from model.ubj
+2025-05-06 17:31:21,383 [INFO] Analyzing token: 3ZosKPe3FoaJsjHLPBejf5d8PizSFTorStj4gmJs7Dk9
+2025-05-06 17:31:21,385 [INFO] Fetching new data for 3ZosKPe3FoaJsjHLPBejf5d8PizSFTorStj4gmJs7Dk9
+2025-05-06 17:31:35,774 [INFO] Model loaded from model.ubj
+2025-05-06 17:31:38,004 [INFO] Analyzing token: 3ZosKPe3FoaJsjHLPBejf5d8PizSFTorStj4gmJs7Dk9
+2025-05-06 17:31:38,008 [INFO] Fetching new data for 3ZosKPe3FoaJsjHLPBejf5d8PizSFTorStj4gmJs7Dk9
+2025-05-06 17:32:17,826 [INFO] Model loaded from model.ubj
+2025-05-06 17:32:23,731 [INFO] Model loaded from model.ubj
+2025-05-06 17:32:39,838 [INFO] Analyzing token: 3ZosKPe3FoaJsjHLPBejf5d8PizSFTorStj4gmJs7Dk9
+2025-05-06 17:32:39,850 [INFO] Fetching new data for 3ZosKPe3FoaJsjHLPBejf5d8PizSFTorStj4gmJs7Dk9
+2025-05-06 17:33:06,952 [INFO] Model loaded from model.ubj
+2025-05-06 18:52:41,055 [INFO] Model loaded from model.ubj
+2025-05-06 18:54:24,861 [INFO] Model loaded from model.ubj
+2025-05-06 19:00:56,476 [INFO] Analyzing token: 14aFmu7R2AH9hDheGfXKj1qJ4mMfEFpqoSyGgMnDpump
+2025-05-06 19:00:56,482 [INFO] Using existing data for 14aFmu7R2AH9hDheGfXKj1qJ4mMfEFpqoSyGgMnDpump, last date: 2025-05-03
+2025-05-06 19:01:12,903 [INFO] Analyzing token: 7AJ1KjzjstMnQGzZk1HAKx2atmvvRqWvmRbdYmnviryq
+2025-05-06 19:01:12,908 [INFO] Using existing data for 7AJ1KjzjstMnQGzZk1HAKx2atmvvRqWvmRbdYmnviryq, last date: 2025-05-03
+2025-05-06 19:02:05,434 [INFO] Model loaded from model.ubj
+2025-05-06 19:02:27,426 [INFO] Analyzing token: HhVM9vHUxbAiRZ9chEecxhF6UdkzveaCG1NC1C3spump
+2025-05-06 19:02:27,428 [INFO] Using existing data for HhVM9vHUxbAiRZ9chEecxhF6UdkzveaCG1NC1C3spump, last date: 2025-05-02
+2025-05-06 19:03:53,019 [INFO] Analyzing token: 6Q8XBjCq1GruUfpVXM5E58Ju55JTKPT6vBQkE5oQpump
+2025-05-06 19:03:53,023 [INFO] Fetching new data for 6Q8XBjCq1GruUfpVXM5E58Ju55JTKPT6vBQkE5oQpump
+2025-05-06 19:04:19,867 [INFO] Analyzing token: Co7gtNVUJjwDw18SKeXdVxaaUSdyT6ZihzgU8wBZpump
+2025-05-06 19:04:19,869 [INFO] Fetching new data for Co7gtNVUJjwDw18SKeXdVxaaUSdyT6ZihzgU8wBZpump
+2025-05-06 19:14:19,363 [INFO] Analyzing token: 14aFmu7R2AH9hDheGfXKj1qJ4mMfEFpqoSyGgMnDpump
+2025-05-06 19:14:19,379 [INFO] Using existing data for 14aFmu7R2AH9hDheGfXKj1qJ4mMfEFpqoSyGgMnDpump, last date: 2025-05-03
+2025-05-06 19:15:13,899 [INFO] Analyzing token: Co7gtNVUJjwDw18SKeXdVxaaUSdyT6ZihzgU8wBZpump
+2025-05-06 19:15:13,900 [INFO] Fetching new data for Co7gtNVUJjwDw18SKeXdVxaaUSdyT6ZihzgU8wBZpump
+2025-05-06 19:16:42,358 [INFO] Analyzing token: 7AJ1KjzjstMnQGzZk1HAKx2atmvvRqWvmRbdYmnviryq
+2025-05-06 19:16:42,364 [INFO] Using existing data for 7AJ1KjzjstMnQGzZk1HAKx2atmvvRqWvmRbdYmnviryq, last date: 2025-05-03
+2025-05-06 19:17:05,321 [INFO] Analyzing token: 14aFmu7R2AH9hDheGfXKj1qJ4mMfEFpqoSyGgMnDpump
+2025-05-06 19:17:05,333 [INFO] Using existing data for 14aFmu7R2AH9hDheGfXKj1qJ4mMfEFpqoSyGgMnDpump, last date: 2025-05-03
+2025-05-06 19:17:44,551 [INFO] Analyzing token: 7AJ1KjzjstMnQGzZk1HAKx2atmvvRqWvmRbdYmnviryq
+2025-05-06 19:17:44,561 [INFO] Using existing data for 7AJ1KjzjstMnQGzZk1HAKx2atmvvRqWvmRbdYmnviryq, last date: 2025-05-03
+2025-05-06 19:18:24,763 [INFO] Analyzing token: 5iVmFCCwJTuuw7p4FrxYoZ1bUNdjg14j7uv5hMsMpump
+2025-05-06 19:18:24,768 [INFO] Fetching new data for 5iVmFCCwJTuuw7p4FrxYoZ1bUNdjg14j7uv5hMsMpump
+2025-05-06 19:19:34,414 [INFO] Analyzing token: 229vWzBTiUNdraYpVtSH9usTwwVxcyPDbBWf1zEPpump
+2025-05-06 19:19:34,422 [INFO] Using existing data for 229vWzBTiUNdraYpVtSH9usTwwVxcyPDbBWf1zEPpump, last date: 2025-05-03
+2025-05-06 19:19:43,432 [INFO] Analyzing token: 229vWzBTiUNdraYpVtSH9usTwwVxcyPDbBWf1zEPpump
+2025-05-06 19:19:43,439 [INFO] Using existing data for 229vWzBTiUNdraYpVtSH9usTwwVxcyPDbBWf1zEPpump, last date: 2025-05-03
+2025-05-06 19:19:43,793 [INFO] Analyzing token: 229vWzBTiUNdraYpVtSH9usTwwVxcyPDbBWf1zEPpump
+2025-05-06 19:19:43,795 [INFO] Using existing data for 229vWzBTiUNdraYpVtSH9usTwwVxcyPDbBWf1zEPpump, last date: 2025-05-03
+2025-05-06 19:19:47,245 [INFO] Analyzing token: 2GmUPhpe93kcTJZrC7NJ2keeDZRT5dBveUgegb13pump
+2025-05-06 19:19:47,251 [INFO] Using existing data for 2GmUPhpe93kcTJZrC7NJ2keeDZRT5dBveUgegb13pump, last date: 2025-05-03
+2025-05-06 19:19:58,320 [INFO] Analyzing token: 2GPJhV9jNrj7TaLYMRgWkcy6sTKLcwntv7nZ7qDyMRGM
+2025-05-06 19:19:58,333 [INFO] Using existing data for 2GPJhV9jNrj7TaLYMRgWkcy6sTKLcwntv7nZ7qDyMRGM, last date: 2025-05-03
+2025-05-06 19:20:03,512 [INFO] Analyzing token: 2G8LH53fcr3aCrEsmAo73eunbZRbyjKrGH5qmur6pump
+2025-05-06 19:20:03,551 [INFO] Using existing data for 2G8LH53fcr3aCrEsmAo73eunbZRbyjKrGH5qmur6pump, last date: 2025-05-03
+2025-05-06 19:20:10,535 [INFO] Analyzing token: 2FcsqRrhvgSfYxJWh32xW873vyqBZ9jmMyXqYSPgNtuZ
+2025-05-06 19:20:10,544 [INFO] Using existing data for 2FcsqRrhvgSfYxJWh32xW873vyqBZ9jmMyXqYSPgNtuZ, last date: 2025-05-03
+2025-05-06 19:20:16,144 [INFO] Analyzing token: 25p2BoNp6qrJH5As6ek6H7Ei495oSkyZd3tGb97sqFmH
+2025-05-06 19:20:16,157 [INFO] Using existing data for 25p2BoNp6qrJH5As6ek6H7Ei495oSkyZd3tGb97sqFmH, last date: 2025-05-03
+2025-05-06 19:20:21,861 [INFO] Analyzing token: 25p2BoNp6qrJH5As6ek6H7Ei495oSkyZd3tGb97sqFmH
+2025-05-06 19:20:21,873 [INFO] Using existing data for 25p2BoNp6qrJH5As6ek6H7Ei495oSkyZd3tGb97sqFmH, last date: 2025-05-03
+2025-05-06 19:20:58,782 [INFO] Analyzing token: 25p2BoNp6qrJH5As6ek6H7Ei495oSkyZd3tGb97sqFmH
+2025-05-06 19:20:58,802 [INFO] Using existing data for 25p2BoNp6qrJH5As6ek6H7Ei495oSkyZd3tGb97sqFmH, last date: 2025-05-03
+2025-05-06 19:21:23,517 [INFO] Model loaded from model.ubj
+2025-05-06 19:21:38,340 [INFO] Analyzing token: 5iVmFCCwJTuuw7p4FrxYoZ1bUNdjg14j7uv5hMsMpump
+2025-05-06 19:21:38,343 [INFO] Using existing data for 5iVmFCCwJTuuw7p4FrxYoZ1bUNdjg14j7uv5hMsMpump, last date: 2025-05-06
+2025-05-06 19:22:37,532 [INFO] Analyzing token: C3DwDjT17gDvvCYC2nsdGHxDHVmQRdhKfpAdqQ29pump
+2025-05-06 19:22:37,614 [INFO] Fetching new data for C3DwDjT17gDvvCYC2nsdGHxDHVmQRdhKfpAdqQ29pump
+2025-05-06 19:22:48,099 [INFO] Analyzing token: WrDYG6miZG2UcXAGN6jQ73ukbigGEHbZovjY7GVpump
+2025-05-06 19:22:48,111 [INFO] Fetching new data for WrDYG6miZG2UcXAGN6jQ73ukbigGEHbZovjY7GVpump
+2025-05-06 19:22:57,038 [INFO] Analyzing token: 8ncucXv6U6epZKHPbgaEBcEK399TpHGKCquSt4RnmX4f
+2025-05-06 19:22:57,054 [INFO] Fetching new data for 8ncucXv6U6epZKHPbgaEBcEK399TpHGKCquSt4RnmX4f
+2025-05-06 19:23:07,864 [INFO] Analyzing token: 8Hg96R1AGDe5vKABwniVPT2LHdhZHmCTFijZAXXZpump
+2025-05-06 19:23:07,875 [INFO] Using existing data for 8Hg96R1AGDe5vKABwniVPT2LHdhZHmCTFijZAXXZpump, last date: 2025-05-03
+2025-05-06 19:23:21,662 [INFO] Analyzing token: 6Q8XBjCq1GruUfpVXM5E58Ju55JTKPT6vBQkE5oQpump
+2025-05-06 19:23:21,665 [INFO] Fetching new data for 6Q8XBjCq1GruUfpVXM5E58Ju55JTKPT6vBQkE5oQpump
+2025-05-06 19:24:17,291 [INFO] Analyzing token: 8ncucXv6U6epZKHPbgaEBcEK399TpHGKCquSt4RnmX4f
+2025-05-06 19:24:17,295 [INFO] Using existing data for 8ncucXv6U6epZKHPbgaEBcEK399TpHGKCquSt4RnmX4f, last date: 2025-05-06
+2025-05-06 19:24:29,178 [INFO] Analyzing token: 8ncucXv6U6epZKHPbgaEBcEK399TpHGKCquSt4RnmX4f
+2025-05-06 19:24:29,196 [INFO] Using existing data for 8ncucXv6U6epZKHPbgaEBcEK399TpHGKCquSt4RnmX4f, last date: 2025-05-06
+2025-05-06 19:24:33,830 [INFO] Analyzing token: C3DwDjT17gDvvCYC2nsdGHxDHVmQRdhKfpAdqQ29pump
+2025-05-06 19:24:33,837 [INFO] Using existing data for C3DwDjT17gDvvCYC2nsdGHxDHVmQRdhKfpAdqQ29pump, last date: 2025-05-06
+2025-05-06 19:24:54,156 [INFO] Analyzing token: CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump
+2025-05-06 19:24:54,472 [INFO] Using existing data for CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump, last date: 2025-05-03
+2025-05-06 19:25:06,425 [INFO] Analyzing token: FWAr6oWa6CHg6WUcXu8CqkmsdbhtEqL8t31QTonppump
+2025-05-06 19:25:06,430 [INFO] Using existing data for FWAr6oWa6CHg6WUcXu8CqkmsdbhtEqL8t31QTonppump, last date: 2025-05-03
+2025-05-06 19:25:13,784 [INFO] Analyzing token: BQX1cjcRHXmrqNtoFWwmE5bZj7RPneTmqXB979b2pump
+2025-05-06 19:25:13,797 [INFO] Using existing data for BQX1cjcRHXmrqNtoFWwmE5bZj7RPneTmqXB979b2pump, last date: 2025-05-03
+2025-05-06 19:25:21,570 [INFO] Analyzing token: BKzBdMEPfjyu9qNNjnhSbbkf2n14hcymQkmuwkfdpump
+2025-05-06 19:25:21,573 [INFO] Fetching new data for BKzBdMEPfjyu9qNNjnhSbbkf2n14hcymQkmuwkfdpump
+2025-05-06 19:26:57,388 [INFO] Analyzing token: BKzBdMEPfjyu9qNNjnhSbbkf2n14hcymQkmuwkfdpump
+2025-05-06 19:26:57,397 [INFO] Using existing data for BKzBdMEPfjyu9qNNjnhSbbkf2n14hcymQkmuwkfdpump, last date: 2025-05-06
+2025-05-06 19:34:21,240 [INFO] Analyzing token: BKzBdMEPfjyu9qNNjnhSbbkf2n14hcymQkmuwkfdpump
+2025-05-06 19:34:21,251 [INFO] Using existing data for BKzBdMEPfjyu9qNNjnhSbbkf2n14hcymQkmuwkfdpump, last date: 2025-05-06
+2025-05-06 19:35:45,173 [INFO] Analyzing token: C3DwDjT17gDvvCYC2nsdGHxDHVmQRdhKfpAdqQ29pump
+2025-05-06 19:35:45,192 [INFO] Using existing data for C3DwDjT17gDvvCYC2nsdGHxDHVmQRdhKfpAdqQ29pump, last date: 2025-05-06
+2025-05-06 19:35:50,599 [INFO] Analyzing token: 25p2BoNp6qrJH5As6ek6H7Ei495oSkyZd3tGb97sqFmH
+2025-05-06 19:35:50,610 [INFO] Using existing data for 25p2BoNp6qrJH5As6ek6H7Ei495oSkyZd3tGb97sqFmH, last date: 2025-05-03
+2025-05-06 19:35:57,568 [INFO] Analyzing token: 25p2BoNp6qrJH5As6ek6H7Ei495oSkyZd3tGb97sqFmH
+2025-05-06 19:35:57,574 [INFO] Using existing data for 25p2BoNp6qrJH5As6ek6H7Ei495oSkyZd3tGb97sqFmH, last date: 2025-05-03
+2025-05-06 19:36:23,080 [INFO] Analyzing token: 25p2BoNp6qrJH5As6ek6H7Ei495oSkyZd3tGb97sqFmH
+2025-05-06 19:36:23,085 [INFO] Using existing data for 25p2BoNp6qrJH5As6ek6H7Ei495oSkyZd3tGb97sqFmH, last date: 2025-05-03
+2025-05-06 19:36:53,304 [INFO] Model loaded from model.ubj
+2025-05-06 19:38:59,345 [INFO] Model loaded from model.ubj
+2025-05-06 19:39:52,912 [INFO] Model loaded from model.ubj
+2025-05-06 19:40:06,442 [INFO] Model loaded from model.ubj
+2025-05-06 19:40:39,458 [INFO] Model loaded from model.ubj
+2025-05-06 19:40:44,488 [INFO] Model loaded from model.ubj
+2025-05-06 19:41:17,014 [INFO] Analyzing token: CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump
+2025-05-06 19:41:40,674 [INFO] Model loaded from model.ubj
+2025-05-06 19:41:44,930 [INFO] Analyzing token: CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump
+2025-05-06 19:41:44,940 [INFO] Fetching new data for CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump
+2025-05-06 19:42:05,768 [INFO] Model loaded from model.ubj
+2025-05-06 19:42:07,613 [INFO] Analyzing token: CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump
+2025-05-06 19:42:07,615 [INFO] Fetching new data for CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump
+2025-05-06 19:43:16,899 [INFO] Analyzing token: CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump
+2025-05-06 19:43:16,902 [INFO] Fetching new data for CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump
+2025-05-06 19:44:01,066 [INFO] Model loaded from model.ubj
+2025-05-06 19:44:01,103 [INFO] Analyzing token: CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump
+2025-05-06 19:44:01,109 [INFO] Fetching new data for CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump
+2025-05-06 19:45:13,926 [INFO] Model loaded from model.ubj
+2025-05-06 19:45:17,261 [INFO] Analyzing token: CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump
+2025-05-06 19:45:17,264 [INFO] Using existing data for CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump, last date: 2025-05-06
+2025-05-06 19:45:27,042 [INFO] Analyzing token: CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump
+2025-05-06 19:45:27,044 [INFO] Using existing data for CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump, last date: 2025-05-06
+2025-05-06 19:45:42,916 [INFO] Model loaded from model.ubj
+2025-05-06 19:45:46,304 [INFO] Model loaded from model.ubj
+2025-05-06 19:46:17,759 [INFO] Analyzing token: FKNfAwb8TmjYkj11V4NiTz4TgrLWTWgm2NRwAD9epump
+2025-05-06 19:46:17,765 [INFO] Fetching new data for FKNfAwb8TmjYkj11V4NiTz4TgrLWTWgm2NRwAD9epump
+2025-05-06 19:46:48,288 [INFO] Analyzing token: Ai3eKAWjzKMV8wRwd41nVP83yqfbAVJykhvJVPxspump
+2025-05-06 19:46:48,292 [INFO] Fetching new data for Ai3eKAWjzKMV8wRwd41nVP83yqfbAVJykhvJVPxspump
+2025-05-06 19:47:05,237 [INFO] Analyzing token: 526A9a7VDdfr32EDWr3YDFgZk7BA3LjToAKG2WTbpump
+2025-05-06 19:47:05,240 [INFO] Fetching new data for 526A9a7VDdfr32EDWr3YDFgZk7BA3LjToAKG2WTbpump
+2025-05-06 19:47:50,300 [INFO] Model loaded from model.ubj
+2025-05-06 19:47:53,085 [INFO] Model loaded from model.ubj
+2025-05-06 19:47:53,111 [INFO] Analyzing token: 526A9a7VDdfr32EDWr3YDFgZk7BA3LjToAKG2WTbpump
+2025-05-06 19:47:53,117 [INFO] Fetching new data for 526A9a7VDdfr32EDWr3YDFgZk7BA3LjToAKG2WTbpump
+2025-05-06 19:48:48,210 [INFO] Model loaded from model.ubj
+2025-05-06 19:48:50,555 [INFO] Model loaded from model.ubj
+2025-05-06 19:48:56,402 [INFO] Analyzing token: 526A9a7VDdfr32EDWr3YDFgZk7BA3LjToAKG2WTbpump
+2025-05-06 19:48:56,406 [INFO] Fetching new data for 526A9a7VDdfr32EDWr3YDFgZk7BA3LjToAKG2WTbpump, limit 2
+2025-05-06 19:49:53,414 [INFO] Model loaded from model.ubj
+2025-05-06 19:54:34,639 [INFO] Model loaded from model.ubj
+2025-05-06 19:54:37,908 [INFO] Analyzing token: 526A9a7VDdfr32EDWr3YDFgZk7BA3LjToAKG2WTbpump
+2025-05-06 19:54:37,915 [INFO] Fetching last 3 day(s) for 526A9a7VDdfr32EDWr3YDFgZk7BA3LjToAKG2WTbpump
+2025-05-06 19:55:03,561 [INFO] Model loaded from model.ubj
+2025-05-06 19:55:23,290 [INFO] Analyzing token: oR1P5q88dBSbdXiWqiTdaYduiNjD1LamsxBjqZQpump
+2025-05-06 19:55:44,611 [INFO] Model loaded from model.ubj
+2025-05-06 19:55:44,653 [INFO] Analyzing token: oR1P5q88dBSbdXiWqiTdaYduiNjD1LamsxBjqZQpump
+2025-05-06 19:55:44,657 [INFO] Fetching last 300 day(s) for oR1P5q88dBSbdXiWqiTdaYduiNjD1LamsxBjqZQpump
+2025-05-06 19:56:04,424 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-06 19:56:04,433 [INFO] Fetching last 300 day(s) for 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-06 19:57:39,194 [INFO] Analyzing token: C3DwDjT17gDvvCYC2nsdGHxDHVmQRdhKfpAdqQ29pump
+2025-05-06 19:57:39,232 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 19:57:51,430 [INFO] Analyzing token: 2LfnTU2Rz19T1PHx1oxk7UcUZ7aRnpVhZ22sgoNRpump
+2025-05-06 19:57:51,431 [INFO] Fetching last 300 day(s) for 2LfnTU2Rz19T1PHx1oxk7UcUZ7aRnpVhZ22sgoNRpump
+2025-05-06 19:58:11,180 [INFO] Analyzing token: C3DwDjT17gDvvCYC2nsdGHxDHVmQRdhKfpAdqQ29pump
+2025-05-06 19:58:11,182 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 19:58:22,042 [INFO] Analyzing token: FKNfAwb8TmjYkj11V4NiTz4TgrLWTWgm2NRwAD9epump
+2025-05-06 19:58:22,048 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:10:29,561 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-06 20:10:29,564 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:13:35,361 [INFO] Model loaded from model.ubj
+2025-05-06 20:14:06,990 [INFO] Analyzing token: 5iVmFCCwJTuuw7p4FrxYoZ1bUNdjg14j7uv5hMsMpump
+2025-05-06 20:14:07,004 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:14:20,942 [INFO] Analyzing token: 4w6tKakYwt8ZisntNgJxhc9zipZ1w1ga8LGgjvH2pump
+2025-05-06 20:14:20,945 [INFO] Fetching last 300 day(s) for 4w6tKakYwt8ZisntNgJxhc9zipZ1w1ga8LGgjvH2pump
+2025-05-06 20:14:47,949 [INFO] Analyzing token: C3DwDjT17gDvvCYC2nsdGHxDHVmQRdhKfpAdqQ29pump
+2025-05-06 20:14:47,953 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:14:52,109 [INFO] Analyzing token: FKNfAwb8TmjYkj11V4NiTz4TgrLWTWgm2NRwAD9epump
+2025-05-06 20:14:52,111 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:15:32,444 [INFO] Analyzing token: BKzBdMEPfjyu9qNNjnhSbbkf2n14hcymQkmuwkfdpump
+2025-05-06 20:15:32,450 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:15:34,925 [INFO] Analyzing token: 8ncucXv6U6epZKHPbgaEBcEK399TpHGKCquSt4RnmX4f
+2025-05-06 20:15:34,927 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:15:36,387 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-06 20:15:36,388 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:15:57,240 [INFO] Analyzing token: J1Wpmugrooj1yMyQKrdZ2vwRXG5rhfx3vTnYE39gpump
+2025-05-06 20:15:57,242 [INFO] Fetching last 2 day(s) for J1Wpmugrooj1yMyQKrdZ2vwRXG5rhfx3vTnYE39gpump
+2025-05-06 20:17:35,493 [INFO] Model loaded from model.ubj
+2025-05-06 20:17:35,652 [INFO] Analyzing token: J1Wpmugrooj1yMyQKrdZ2vwRXG5rhfx3vTnYE39gpump
+2025-05-06 20:17:35,655 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:17:55,015 [INFO] Analyzing token: A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump
+2025-05-06 20:17:55,024 [INFO] Fetching last 2 day(s) for A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump
+2025-05-06 20:18:33,260 [INFO] Model loaded from model.ubj
+2025-05-06 20:18:34,899 [INFO] Analyzing token: A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump
+2025-05-06 20:18:34,902 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:18:45,653 [INFO] Analyzing token: HhVM9vHUxbAiRZ9chEecxhF6UdkzveaCG1NC1C3spump
+2025-05-06 20:18:45,659 [INFO] Fetching last 3 day(s) for HhVM9vHUxbAiRZ9chEecxhF6UdkzveaCG1NC1C3spump
+2025-05-06 20:19:06,448 [INFO] Analyzing token: A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump
+2025-05-06 20:19:06,453 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:19:48,240 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-06 20:19:48,241 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:19:49,696 [INFO] Analyzing token: 5iVmFCCwJTuuw7p4FrxYoZ1bUNdjg14j7uv5hMsMpump
+2025-05-06 20:19:49,697 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:19:55,621 [INFO] Analyzing token: J1Wpmugrooj1yMyQKrdZ2vwRXG5rhfx3vTnYE39gpump
+2025-05-06 20:19:55,625 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:19:58,250 [INFO] Analyzing token: A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump
+2025-05-06 20:19:58,259 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:20:20,354 [INFO] Analyzing token: A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump
+2025-05-06 20:20:20,372 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:20:31,523 [INFO] Analyzing token: FKNfAwb8TmjYkj11V4NiTz4TgrLWTWgm2NRwAD9epump
+2025-05-06 20:20:31,541 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:26:41,638 [INFO] Analyzing token: 8ncucXv6U6epZKHPbgaEBcEK399TpHGKCquSt4RnmX4f
+2025-05-06 20:26:41,644 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:26:45,875 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-06 20:26:45,877 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:26:48,316 [INFO] Analyzing token: 5iVmFCCwJTuuw7p4FrxYoZ1bUNdjg14j7uv5hMsMpump
+2025-05-06 20:26:48,320 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:26:49,483 [INFO] Analyzing token: 8ncucXv6U6epZKHPbgaEBcEK399TpHGKCquSt4RnmX4f
+2025-05-06 20:26:49,485 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:26:50,999 [INFO] Analyzing token: A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump
+2025-05-06 20:26:51,001 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:26:52,954 [INFO] Analyzing token: Ai3eKAWjzKMV8wRwd41nVP83yqfbAVJykhvJVPxspump
+2025-05-06 20:26:52,955 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:27:07,253 [INFO] Analyzing token: Ai3eKAWjzKMV8wRwd41nVP83yqfbAVJykhvJVPxspump
+2025-05-06 20:27:07,260 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:31:27,000 [INFO] Analyzing token: 5iVmFCCwJTuuw7p4FrxYoZ1bUNdjg14j7uv5hMsMpump
+2025-05-06 20:31:27,057 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:31:29,628 [INFO] Analyzing token: C3DwDjT17gDvvCYC2nsdGHxDHVmQRdhKfpAdqQ29pump
+2025-05-06 20:31:29,630 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:40:36,450 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-06 20:40:36,470 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:47:32,447 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-06 20:47:32,458 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:52:55,176 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-06 20:52:55,180 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 20:55:20,597 [INFO] Analyzing token: CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump
+2025-05-06 20:55:20,603 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:11:58,155 [INFO] Model loaded from model.ubj
+2025-05-06 21:12:01,125 [INFO] Analyzing token: 8ncucXv6U6epZKHPbgaEBcEK399TpHGKCquSt4RnmX4f
+2025-05-06 21:12:01,137 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:12:12,634 [INFO] Analyzing token: J1Wpmugrooj1yMyQKrdZ2vwRXG5rhfx3vTnYE39gpump
+2025-05-06 21:12:12,638 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:14:34,591 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-06 21:14:34,593 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:17:15,966 [INFO] Model loaded from model.ubj
+2025-05-06 21:17:28,999 [INFO] Analyzing token: Ai3eKAWjzKMV8wRwd41nVP83yqfbAVJykhvJVPxspump
+2025-05-06 21:17:29,020 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:17:57,437 [INFO] Analyzing token: 5iVmFCCwJTuuw7p4FrxYoZ1bUNdjg14j7uv5hMsMpump
+2025-05-06 21:17:57,439 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:17:59,422 [INFO] Analyzing token: A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump
+2025-05-06 21:17:59,425 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:18:07,105 [INFO] Analyzing token: A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump
+2025-05-06 21:18:07,110 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:18:25,023 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-06 21:18:25,026 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:23:44,129 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-06 21:23:44,133 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:27:43,864 [INFO] Analyzing token: 5iVmFCCwJTuuw7p4FrxYoZ1bUNdjg14j7uv5hMsMpump
+2025-05-06 21:27:43,865 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:27:53,528 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-06 21:27:53,530 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:29:40,391 [INFO] Analyzing token: Ai3eKAWjzKMV8wRwd41nVP83yqfbAVJykhvJVPxspump
+2025-05-06 21:29:40,395 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:35:00,937 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-06 21:35:00,938 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:35:29,908 [INFO] Analyzing token: Ai3eKAWjzKMV8wRwd41nVP83yqfbAVJykhvJVPxspump
+2025-05-06 21:35:29,915 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:36:13,427 [INFO] Analyzing token: A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump
+2025-05-06 21:36:13,436 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:36:16,086 [INFO] Analyzing token: 5iVmFCCwJTuuw7p4FrxYoZ1bUNdjg14j7uv5hMsMpump
+2025-05-06 21:36:16,088 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:40:27,789 [INFO] Analyzing token: A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump
+2025-05-06 21:40:27,797 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:40:58,915 [INFO] Analyzing token: BKzBdMEPfjyu9qNNjnhSbbkf2n14hcymQkmuwkfdpump
+2025-05-06 21:40:58,919 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:41:01,448 [INFO] Analyzing token: J1Wpmugrooj1yMyQKrdZ2vwRXG5rhfx3vTnYE39gpump
+2025-05-06 21:41:01,451 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:41:17,459 [INFO] Analyzing token: BQX1cjcRHXmrqNtoFWwmE5bZj7RPneTmqXB979b2pump
+2025-05-06 21:41:17,470 [INFO] Fetching last 2 day(s) for BQX1cjcRHXmrqNtoFWwmE5bZj7RPneTmqXB979b2pump
+2025-05-06 21:41:33,253 [INFO] Analyzing token: Cmt6QFnpJnQDJuY7bE3ThaMDvaExPmoSHfEJE8BDpump
+2025-05-06 21:41:33,257 [INFO] Fetching last 2 day(s) for Cmt6QFnpJnQDJuY7bE3ThaMDvaExPmoSHfEJE8BDpump
+2025-05-06 21:41:54,737 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-06 21:41:54,740 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:45:55,544 [INFO] Analyzing token: A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump
+2025-05-06 21:45:55,549 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:46:12,073 [INFO] Analyzing token: 5iVmFCCwJTuuw7p4FrxYoZ1bUNdjg14j7uv5hMsMpump
+2025-05-06 21:46:12,075 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:47:08,530 [INFO] Analyzing token: A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump
+2025-05-06 21:47:08,544 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:47:12,796 [INFO] Analyzing token: Ai3eKAWjzKMV8wRwd41nVP83yqfbAVJykhvJVPxspump
+2025-05-06 21:47:12,797 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:47:45,558 [INFO] Analyzing token: Ai3eKAWjzKMV8wRwd41nVP83yqfbAVJykhvJVPxspump
+2025-05-06 21:47:45,564 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:47:48,056 [INFO] Analyzing token: C3DwDjT17gDvvCYC2nsdGHxDHVmQRdhKfpAdqQ29pump
+2025-05-06 21:47:48,057 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:47:50,259 [INFO] Analyzing token: CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump
+2025-05-06 21:47:50,261 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:47:54,060 [INFO] Analyzing token: Cmt6QFnpJnQDJuY7bE3ThaMDvaExPmoSHfEJE8BDpump
+2025-05-06 21:47:54,067 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:48:01,854 [INFO] Analyzing token: 5iVmFCCwJTuuw7p4FrxYoZ1bUNdjg14j7uv5hMsMpump
+2025-05-06 21:48:01,861 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:48:03,910 [INFO] Analyzing token: 8ncucXv6U6epZKHPbgaEBcEK399TpHGKCquSt4RnmX4f
+2025-05-06 21:48:03,910 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:51:50,051 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-06 21:51:50,053 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:52:44,493 [INFO] Analyzing token: 38PgzpJYu2HkiYvV8qePFakB8tuobPdGm2FFEn7Dpump
+2025-05-06 21:52:44,543 [INFO] Fetching last 300 day(s) for 38PgzpJYu2HkiYvV8qePFakB8tuobPdGm2FFEn7Dpump
+2025-05-06 21:52:57,742 [INFO] Analyzing token: Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump
+2025-05-06 21:52:57,746 [INFO] Fetching last 300 day(s) for Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump
+2025-05-06 21:53:09,575 [INFO] Analyzing token: DitHyRMQiSDhn5cnKMJV2CDDt6sVct96YrECiM49pump
+2025-05-06 21:53:09,591 [INFO] Fetching last 300 day(s) for DitHyRMQiSDhn5cnKMJV2CDDt6sVct96YrECiM49pump
+2025-05-06 21:53:30,558 [INFO] Analyzing token: 8sv4W4uQ9qML87Kr2XFkYBDwsiFEJVZZ1ScsM71Hpump
+2025-05-06 21:53:30,560 [INFO] Fetching last 300 day(s) for 8sv4W4uQ9qML87Kr2XFkYBDwsiFEJVZZ1ScsM71Hpump
+2025-05-06 21:55:37,434 [INFO] Analyzing token: 9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump
+2025-05-06 21:55:37,465 [INFO] Fetching last 2 day(s) for 9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump
+2025-05-06 21:56:26,262 [INFO] Analyzing token: 5iVmFCCwJTuuw7p4FrxYoZ1bUNdjg14j7uv5hMsMpump
+2025-05-06 21:56:26,271 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:58:27,873 [INFO] Analyzing token: 8sv4W4uQ9qML87Kr2XFkYBDwsiFEJVZZ1ScsM71Hpump
+2025-05-06 21:58:27,907 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:58:53,344 [INFO] Analyzing token: 8sv4W4uQ9qML87Kr2XFkYBDwsiFEJVZZ1ScsM71Hpump
+2025-05-06 21:58:53,351 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 21:59:40,762 [INFO] Analyzing token: 8sv4W4uQ9qML87Kar2XFkYBDwsiFEJVZZ1ScsM71Hpump
+2025-05-06 21:59:40,767 [INFO] Fetching last 300 day(s) for 8sv4W4uQ9qML87Kar2XFkYBDwsiFEJVZZ1ScsM71Hpump
+2025-05-06 22:00:56,699 [INFO] Analyzing token: 7GcHce9dbYNj84Rri6LCi9fJAJ39VCCxqy89oL18pump
+2025-05-06 22:00:56,725 [INFO] Fetching last 300 day(s) for 7GcHce9dbYNj84Rri6LCi9fJAJ39VCCxqy89oL18pump
+2025-05-06 22:01:15,162 [INFO] Analyzing token: 8sv4W4uQ9qML87Kr2XFkYBDwsiFEJVZZ1ScsM71Hpump
+2025-05-06 22:01:15,164 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 22:01:16,294 [INFO] Analyzing token: 8sv4W4uQ9qML87Kr2XFkYBDwsiFEJVZZ1ScsM71Hpump
+2025-05-06 22:01:16,299 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-06 22:01:16,839 [INFO] Analyzing token: 8sv4W4uQ9qML87Kr2XFkYBDwsiFEJVZZ1ScsM71Hpump
+2025-05-06 22:01:16,840 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 09:15:43,493 [INFO] Analyzing token: 8sv4W4uQ9qML87Kr2XFkYBDwsiFEJVZZ1ScsM71Hpump
+2025-05-07 09:15:43,508 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 09:16:18,567 [INFO] Analyzing token: 8sv4W4uQ9qML87Kr2XFkYBDwsiFEJVZZ1ScsM71Hpump
+2025-05-07 09:16:18,572 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 09:16:45,745 [INFO] Analyzing token: 8sv4W4uQ9qML87Kr2XFkYBDwsiFEJVZZ1ScsM71Hpump
+2025-05-07 09:16:45,751 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 09:17:16,193 [INFO] Analyzing token: 8sv4W4uQ9qML87Kr2XFkYBDwsiFEJVZZ1ScsM71Hpump
+2025-05-07 09:17:16,195 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 09:17:36,140 [INFO] Analyzing token: 8sv4W4uQ9qML87Kr2XFkYBDwsiFEJVZZ1ScsM71Hpump
+2025-05-07 09:17:36,142 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 09:17:56,490 [INFO] Analyzing token: 8sv4W4uQ9qML87Kr2XFkYBDwsiFEJVZZ1ScsM71Hpump
+2025-05-07 09:17:56,500 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 09:18:22,571 [INFO] Analyzing token: 38PgzpJYu2HkiYvV8qePFakB8tuobPdGm2FFEn7Dpump
+2025-05-07 09:18:22,579 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 09:18:33,484 [INFO] Analyzing token: 5iVmFCCwJTuuw7p4FrxYoZ1bUNdjg14j7uv5hMsMpump
+2025-05-07 09:18:33,488 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 09:22:51,854 [INFO] Analyzing token: 8sv4W4uQ9qML87Kr2XFkYBDwsiFEJVZZ1ScsM71Hpump
+2025-05-07 09:22:51,857 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 09:22:58,187 [INFO] Analyzing token: Ai3eKAWjzKMV8wRwd41nVP83yqfbAVJykhvJVPxspump
+2025-05-07 09:22:58,196 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 09:23:11,557 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-07 09:23:11,562 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 09:26:26,846 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-07 09:26:26,848 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 09:27:22,983 [INFO] Analyzing token: BQX1cjcRHXmrqNtoFWwmE5bZj7RPneTmqXB979b2pump
+2025-05-07 09:27:22,990 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 09:35:26,645 [INFO] Analyzing token: A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump
+2025-05-07 09:35:26,663 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 09:44:37,902 [INFO] Model loaded from model.ubj
+2025-05-07 09:46:19,426 [INFO] Model loaded from model.ubj
+2025-05-07 09:46:31,212 [INFO] Model loaded from model.ubj
+2025-05-07 09:49:13,081 [INFO] Model loaded from model.ubj
+2025-05-07 09:49:26,420 [INFO] Model loaded from model.ubj
+2025-05-07 09:55:38,955 [INFO] Analyzing token: 5iVmFCCwJTuuw7p4FrxYoZ1bUNdjg14j7uv5hMsMpump
+2025-05-07 09:55:38,973 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 09:56:13,541 [INFO] Analyzing token: A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump
+2025-05-07 09:56:13,548 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 09:59:49,494 [INFO] Analyzing token: A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump
+2025-05-07 09:59:49,505 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 10:15:33,502 [INFO] Analyzing token: A8C3xuqscfmyLrte3V124132mTqrAq8kgMASius9AFNANwpump
+2025-05-07 10:15:33,504 [INFO] Fetching last 300 day(s) for A8C3xuqscfmyLrte3V124132mTqrAq8kgMASius9AFNANwpump
+2025-05-07 10:16:08,816 [INFO] Analyzing token: A8C3xuqscfmyLrte3V124132mT123123qrAq8kgMASius9AFNANwpump
+2025-05-07 10:16:08,836 [INFO] Fetching last 300 day(s) for A8C3xuqscfmyLrte3V124132mT123123qrAq8kgMASius9AFNANwpump
+2025-05-07 10:16:20,730 [INFO] Analyzing token: A8C3xuqscfmyLrte3V124132mT123123qrAq8kgMASius9AFNANwpump
+2025-05-07 10:16:20,741 [INFO] Fetching last 300 day(s) for A8C3xuqscfmyLrte3V124132mT123123qrAq8kgMASius9AFNANwpump
+2025-05-07 10:18:15,847 [INFO] Analyzing token: A8C3xuqscfmyLrte3V124132mT123123qrAq8kgMASius9AFNANwpump
+2025-05-07 10:18:15,889 [INFO] Fetching last 300 day(s) for A8C3xuqscfmyLrte3V124132mT123123qrAq8kgMASius9AFNANwpump
+2025-05-07 10:18:59,465 [INFO] Analyzing token: A8C3xuqscfmyLrte3V124132mT123123qrAq8kgMASius9AFNANwpump
+2025-05-07 10:18:59,569 [INFO] Fetching last 300 day(s) for A8C3xuqscfmyLrte3V124132mT123123qrAq8kgMASius9AFNANwpump
+2025-05-07 10:19:12,587 [INFO] Analyzing token: 12'l;3miorfnwedf
+2025-05-07 10:19:12,591 [INFO] Fetching last 300 day(s) for 12'l;3miorfnwedf
+2025-05-07 10:19:13,892 [ERROR] GraphQL errors: [{'message': "clickhouse return status 400 [400 Bad Request] response Code: 62. DB::Exception: Syntax error: failed at position 1508 ('(') (line 2, col 1501): ('12'l;3miorfnwedf') AND Trade_Side_Currency_MintAddress = tryBase58Decode('So11111111111111111111111111111111111111112') AND if(or(lessOrEquals(dictGet('market. Unmatched parentheses: (. (SYNTAX_ERROR) (version 24.5.4.49 (official build))\n", 'locations': [{'line': 4, 'column': 13}], 'path': ['Solana', 'DEXTradeByTokens']}]
+2025-05-07 10:19:30,761 [INFO] Analyzing token: 12'l;3miorfnwedf
+2025-05-07 10:19:30,765 [INFO] Fetching last 300 day(s) for 12'l;3miorfnwedf
+2025-05-07 10:19:31,988 [ERROR] GraphQL errors: [{'message': "clickhouse return status 400 [400 Bad Request] response Code: 62. DB::Exception: Syntax error: failed at position 1508 ('(') (line 2, col 1501): ('12'l;3miorfnwedf') AND Trade_Side_Currency_MintAddress = tryBase58Decode('So11111111111111111111111111111111111111112') AND if(or(lessOrEquals(dictGet('market. Unmatched parentheses: (. (SYNTAX_ERROR) (version 24.5.4.49 (official build))\n", 'locations': [{'line': 4, 'column': 13}], 'path': ['Solana', 'DEXTradeByTokens']}]
+2025-05-07 10:19:46,511 [INFO] Analyzing token: 12l3miorfnwedf
+2025-05-07 10:19:46,516 [INFO] Fetching last 300 day(s) for 12l3miorfnwedf
+2025-05-07 10:20:59,447 [INFO] Analyzing token: 12l3miorfn';213wedf
+2025-05-07 10:20:59,449 [INFO] Fetching last 300 day(s) for 12l3miorfn';213wedf
+2025-05-07 10:21:00,731 [ERROR] GraphQL errors: [{'message': "clickhouse return status 400 [400 Bad Request] response Code: 62. DB::Exception: Syntax error: failed at position 1508 ('(') (line 2, col 1501): ('12l3miorfn';213wedf') AND Trade_Side_Currency_MintAddress = tryBase58Decode('So11111111111111111111111111111111111111112') AND if(or(lessOrEquals(dictGet('mar. Unmatched parentheses: (. (SYNTAX_ERROR) (version 24.5.4.49 (official build))\n", 'locations': [{'line': 4, 'column': 13}], 'path': ['Solana', 'DEXTradeByTokens']}]
+2025-05-07 10:21:07,824 [INFO] Analyzing token: 12l3miorfn';213wedf
+2025-05-07 10:21:07,825 [INFO] Fetching last 300 day(s) for 12l3miorfn';213wedf
+2025-05-07 10:21:09,271 [ERROR] GraphQL errors: [{'message': "clickhouse return status 400 [400 Bad Request] response Code: 62. DB::Exception: Syntax error: failed at position 1508 ('(') (line 2, col 1501): ('12l3miorfn';213wedf') AND Trade_Side_Currency_MintAddress = tryBase58Decode('So11111111111111111111111111111111111111112') AND if(or(lessOrEquals(dictGet('mar. Unmatched parentheses: (. (SYNTAX_ERROR) (version 24.5.4.49 (official build))\n", 'locations': [{'line': 4, 'column': 13}], 'path': ['Solana', 'DEXTradeByTokens']}]
+2025-05-07 10:21:23,265 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-07 10:21:23,269 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 10:21:31,110 [INFO] Analyzing token: 5RRV6yHhNFDasdasdFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-07 10:21:31,116 [INFO] Fetching last 300 day(s) for 5RRV6yHhNFDasdasdFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-07 10:21:38,930 [INFO] Analyzing token: 9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump
+2025-05-07 10:21:38,939 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 10:25:33,497 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-07 10:25:33,505 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 10:28:43,045 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-07 10:28:43,061 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 10:52:52,115 [INFO] Model loaded from model.ubj
+2025-05-07 11:12:13,215 [INFO] Analyzing token: 8ncucXv6U6epZKHPbgaEBcEK399TpHGKCquSt4RnmX4f
+2025-05-07 11:12:13,227 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 11:12:22,645 [INFO] Analyzing token: 8ncucXv6U6epZKHPbgaEBcEK399TpHGKCquSt4RnmX4f
+2025-05-07 11:12:22,663 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 11:12:44,652 [INFO] Analyzing token: 8ncucXv6U6epZKHPbgaEBcEK399TpHGKCquSt4RnmX4f
+2025-05-07 11:12:44,661 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 11:12:51,776 [INFO] Analyzing token: 8ncucXv6U6epZKHPbgaEBcEK399TpHGKCquSt4RnmX4f
+2025-05-07 11:12:51,784 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 11:13:13,856 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-07 11:13:13,862 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 11:13:25,617 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-07 11:13:25,620 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 11:15:27,553 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-07 11:15:27,558 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 11:18:26,883 [INFO] Analyzing token: 8ncucXv6U6epZKHPbgaEBcEK399TpHGKCquSt4RnmX4f
+2025-05-07 11:18:26,888 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 11:18:52,921 [INFO] Analyzing token: 38PgzpJYu2HkiYvV8qePFakB8tuobPdGm2FFEn7Dpump
+2025-05-07 11:18:52,923 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 11:19:07,850 [INFO] Analyzing token: 8ncucXv6U6epZKHPbgaEBcEK399TpHGKCquSt4RnmX4f
+2025-05-07 11:19:07,862 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 11:19:47,806 [INFO] Analyzing token: 38PgzpJYu2HkiYvV8qePFakB8tuobPdGm2FFEn7Dpump
+2025-05-07 11:19:47,809 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 11:20:10,796 [INFO] Model loaded from model.ubj
+2025-05-07 11:22:02,560 [INFO] Analyzing token: 38PgzpJYu2HkiYvV8qePFakB8tuobPdGm2FFEn7Dpump
+2025-05-07 11:22:02,565 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 11:23:26,710 [INFO] Analyzing token: 5RRV6yHhNFDFYvA3aZnXLx1Hu8BzoLyvgcFceKD6pump
+2025-05-07 11:23:26,734 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 11:24:23,074 [INFO] Analyzing token: 9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump
+2025-05-07 11:24:23,090 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 11:29:46,648 [INFO] Analyzing token: BQX1cjcRHXmrqNtoFWwmE5bZj7RPneTmqXB979b2pump
+2025-05-07 11:29:46,690 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 11:33:18,236 [INFO] Analyzing token: BQX1cjcRHXmrqNtoFWwmE5bZj7RPneTmqXB979b2pump
+2025-05-07 11:33:18,237 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 11:39:52,668 [INFO] Analyzing token: 34DKLHHEdD55oz8ozFzoBfpMSyYhPSZjhZJHkdEspump
+2025-05-07 11:39:52,669 [INFO] Fetching last 300 day(s) for 34DKLHHEdD55oz8ozFzoBfpMSyYhPSZjhZJHkdEspump
+2025-05-07 11:40:17,644 [INFO] Analyzing token: 34DKLHHEdD55oz8ozFzoBfpMSyYhPSZjhZJHkdEspump
+2025-05-07 11:40:17,661 [INFO] Fetching last 300 day(s) for 34DKLHHEdD55oz8ozFzoBfpMSyYhPSZjhZJHkdEspump
+2025-05-07 11:40:25,985 [INFO] Analyzing token: BKzBdMEPfjyu9qNNjnhSbbkf2n14hcymQkmuwkfdpump
+2025-05-07 11:40:25,987 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 11:41:43,628 [INFO] Analyzing token: 38PgzpJYu2HkiYvV8qePFakB8tuobPdGm2FFEn7Dpump
+2025-05-07 11:41:43,633 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 11:44:48,111 [INFO] Model loaded from model.ubj
+2025-05-07 11:46:54,417 [INFO] Analyzing token: 8h3jsXbvBRPKGGRPhoYRHr7ca8qH3tBeaE2S93X1pump
+2025-05-07 11:46:54,419 [INFO] Fetching last 300 day(s) for 8h3jsXbvBRPKGGRPhoYRHr7ca8qH3tBeaE2S93X1pump
+2025-05-07 11:47:49,938 [INFO] Analyzing token: GMzuntWYJLpNuCizrSR7ZXggiMdDzTNiEmSNHHunpump
+2025-05-07 11:47:49,940 [INFO] Fetching last 3 day(s) for GMzuntWYJLpNuCizrSR7ZXggiMdDzTNiEmSNHHunpump
+2025-05-07 11:49:04,291 [INFO] Analyzing token: GMzuntWYJLpNuCizrSR7ZXggiMdDzTNiEmSNHHunpump
+2025-05-07 11:49:04,298 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 11:54:54,305 [INFO] Model loaded from model.ubj
+2025-05-07 12:00:29,133 [INFO] Model loaded from model.ubj
+2025-05-07 12:01:01,915 [INFO] Analyzing token: 9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump
+2025-05-07 12:01:01,932 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 12:02:23,345 [INFO] Model loaded from model.ubj
+2025-05-07 12:03:19,041 [INFO] Model loaded from model.ubj
+2025-05-07 12:03:31,354 [INFO] Model loaded from model.ubj
+2025-05-07 12:03:45,240 [INFO] Model loaded from model.ubj
+2025-05-07 12:04:35,201 [INFO] Model loaded from model.ubj
+2025-05-07 12:05:37,701 [INFO] Analyzing token: 38PgzpJYu2HkiYvV8qePFakB8tuobPdGm2FFEn7Dpump
+2025-05-07 12:05:37,708 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 12:05:52,596 [INFO] Analyzing token: 3ZosKPe3FoaJsjHLPBejf5d8PizSFTorStj4gmJs7Dk9
+2025-05-07 12:05:52,607 [INFO] Fetching last 30 day(s) for 3ZosKPe3FoaJsjHLPBejf5d8PizSFTorStj4gmJs7Dk9
+2025-05-07 12:05:57,189 [INFO] Analyzing token: 6Q8XBjCq1GruUfpVXM5E58Ju55JTKPT6vBQkE5oQpump
+2025-05-07 12:05:57,198 [INFO] Fetching last 7 day(s) for 6Q8XBjCq1GruUfpVXM5E58Ju55JTKPT6vBQkE5oQpump
+2025-05-07 12:06:03,970 [INFO] Analyzing token: 8ncucXv6U6epZKHPbgaEBcEK399TpHGKCquSt4RnmX4f
+2025-05-07 12:06:03,972 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 12:07:45,661 [INFO] Analyzing token: GMzuntWYJLpNuCizrSR7ZXggiMdDzTNiEmSNHHunpump
+2025-05-07 12:07:45,672 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 12:13:03,873 [INFO] Analyzing token: 5voS9evDjxF589WuEub5i4ti7FWQmZCsAsyD5ucbuRqM
+2025-05-07 12:13:03,924 [INFO] Fetching last 3 day(s) for 5voS9evDjxF589WuEub5i4ti7FWQmZCsAsyD5ucbuRqM
+2025-05-07 12:13:21,781 [INFO] Analyzing token: CNvitvFnSM5ed6K28RUNSaAjqqz5tX1rA5HgaBN9pump
+2025-05-07 12:13:21,804 [INFO] Fetching last 3 day(s) for CNvitvFnSM5ed6K28RUNSaAjqqz5tX1rA5HgaBN9pump
+2025-05-07 12:14:16,676 [INFO] Analyzing token: EsP4kJfKUDLfX274WoBSiiEy74Sh4tZKUCDjfULHpump
+2025-05-07 12:14:16,782 [INFO] Fetching last 3 day(s) for EsP4kJfKUDLfX274WoBSiiEy74Sh4tZKUCDjfULHpump
+2025-05-07 12:14:38,252 [INFO] Analyzing token: 4HBQm2EhdpUWZkTYxttxNDnsoWi5beRAGWHpjVo8pump
+2025-05-07 12:14:38,424 [INFO] Fetching last 3 day(s) for 4HBQm2EhdpUWZkTYxttxNDnsoWi5beRAGWHpjVo8pump
+2025-05-07 12:14:54,890 [INFO] Analyzing token: 3B5wuUrMEi5yATD7on46hKfej3pfmd7t1RKgrsN3pump
+2025-05-07 12:14:54,900 [INFO] Fetching last 3 day(s) for 3B5wuUrMEi5yATD7on46hKfej3pfmd7t1RKgrsN3pump
+2025-05-07 12:15:20,913 [INFO] Analyzing token: BLDiYcvm3CLcgZ7XUBPgz6idSAkNmWY6MBbm8Xpjpump
+2025-05-07 12:15:21,894 [INFO] Fetching last 3 day(s) for BLDiYcvm3CLcgZ7XUBPgz6idSAkNmWY6MBbm8Xpjpump
+2025-05-07 12:25:25,584 [INFO] Analyzing token: 8h3jsXbvBRPKGGRPhoYRHr7ca8qH3tBeaE2S93X1pump
+2025-05-07 12:25:25,631 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 12:25:32,977 [INFO] Analyzing token: 38PgzpJYu2HkiYvV8qePFakB8tuobPdGm2FFEn7Dpump
+2025-05-07 12:25:32,982 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 12:25:49,345 [INFO] Analyzing token: 38PgzpJYu2HkiYvV8qePFakB8tuobPaBQQzEvYT4knThhkSPBvSKBLg1LEczisWLhx5ydJipumpdGm2FFEn7Dpump
+2025-05-07 12:25:49,349 [INFO] Fetching last 300 day(s) for 38PgzpJYu2HkiYvV8qePFakB8tuobPaBQQzEvYT4knThhkSPBvSKBLg1LEczisWLhx5ydJipumpdGm2FFEn7Dpump
+2025-05-07 12:27:34,116 [INFO] Analyzing token: BQQzEvYT4knThhkSPBvSKBLg1LEczisWLhx5ydJipump
+2025-05-07 12:27:34,117 [INFO] Fetching last 300 day(s) for BQQzEvYT4knThhkSPBvSKBLg1LEczisWLhx5ydJipump
+2025-05-07 12:30:43,304 [INFO] Model loaded from model.ubj
+2025-05-07 12:31:07,405 [INFO] Model loaded from model.ubj
+2025-05-07 15:10:46,248 [INFO] Model loaded from model.ubj
+2025-05-07 15:10:57,533 [INFO] Analyzing token: 8sv4W4uQ9qML87Kr2XFkYBDwsiFEJVZZ1ScsM71Hpump
+2025-05-07 15:10:57,546 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 15:11:07,316 [INFO] Analyzing token: pump
+2025-05-07 15:11:07,363 [INFO] Fetching last 300 day(s) for pump
+2025-05-07 15:11:11,116 [INFO] Analyzing token: 8us9FJ8M38sCv144HYooEYSSDxA1iBCqMNmYB7y8pump
+2025-05-07 15:11:11,117 [INFO] Fetching last 300 day(s) for 8us9FJ8M38sCv144HYooEYSSDxA1iBCqMNmYB7y8pump
+2025-05-07 15:11:43,735 [INFO] Analyzing token: 8BdXCskcD98NUk9Ciwx6eZqXUD9zB891sSu3rYBSpump
+2025-05-07 15:11:43,737 [INFO] Fetching last 300 day(s) for 8BdXCskcD98NUk9Ciwx6eZqXUD9zB891sSu3rYBSpump
+2025-05-07 15:12:44,738 [INFO] Analyzing token: BRLiKoD5jMwBYG82Az2R33Jo8hdGxhS5KLz385utpump
+2025-05-07 15:12:44,753 [INFO] Fetching last 300 day(s) for BRLiKoD5jMwBYG82Az2R33Jo8hdGxhS5KLz385utpump
+2025-05-07 15:14:37,515 [INFO] Analyzing token: G8jZcbzzYmUoVvzjqtGRKB9XhtTa1DuPTUw6fnS9pump
+2025-05-07 15:14:37,640 [INFO] Fetching last 300 day(s) for G8jZcbzzYmUoVvzjqtGRKB9XhtTa1DuPTUw6fnS9pump
+2025-05-07 15:16:09,570 [INFO] Analyzing token: 3B5wuUrMEi5yATD7on46hKfej3pfmd7t1RKgrsN3pump
+2025-05-07 15:16:09,598 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 15:16:41,341 [INFO] Analyzing token: G8jZcbzzYmUoVvzjqtGRKB9XhtTa1DuPTUw6fnS9pump
+2025-05-07 15:16:41,371 [INFO] Local copy up-to-date (latest 2025-05-07)
+2025-05-07 15:17:26,660 [INFO] Analyzing token: 62FcWQ46b5GSvJTV13wp1aWTnjEXkzKqVQ398tJHpump
+2025-05-07 15:17:26,669 [INFO] Fetching last 300 day(s) for 62FcWQ46b5GSvJTV13wp1aWTnjEXkzKqVQ398tJHpump
+2025-05-07 15:17:38,337 [INFO] Analyzing token: 8BdXCskcD98NUk9Ciwx6eZqXUD9zB891sSu3rYBSpump
+2025-05-07 15:17:38,341 [INFO] Local copy up-to-date (latest 2025-05-07)
+2025-05-07 15:19:31,153 [INFO] Analyzing token: 8BdXCskcD98NUk9Ciwx6eZqXUD9zB891sSu3rYBSpump
+2025-05-07 15:19:31,160 [INFO] Local copy up-to-date (latest 2025-05-07)
+2025-05-07 15:21:26,973 [INFO] Analyzing token: BLDiYcvm3CLcgZ7XUBPgz6idSAkNmWY6MBbm8Xpjpump
+2025-05-07 15:21:26,979 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 15:21:31,443 [INFO] Analyzing token: 4HBQm2EhdpUWZkTYxttxNDnsoWi5beRAGWHpjVo8pump
+2025-05-07 15:21:31,453 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 15:21:53,105 [INFO] Analyzing token: 5N9mU6xNNtToDtrvMjfFrueExwwZqRdUbqjQwmiKpump
+2025-05-07 15:21:53,109 [INFO] Fetching last 300 day(s) for 5N9mU6xNNtToDtrvMjfFrueExwwZqRdUbqjQwmiKpump
+2025-05-07 15:24:15,533 [INFO] Analyzing token: AxSMXaM3KeQ3a6HDfGizJaRnzGqrDHJg3uyZbwZUpump
+2025-05-07 15:24:15,539 [INFO] Fetching last 300 day(s) for AxSMXaM3KeQ3a6HDfGizJaRnzGqrDHJg3uyZbwZUpump
+2025-05-07 15:27:16,212 [INFO] Analyzing token: AxSMXaM3KeQ3a6HDfGizJaRnzGqrDHJg3uyZbwZUpump
+2025-05-07 15:27:16,220 [INFO] Local copy up-to-date (latest 2025-05-07)
+2025-05-07 18:29:01,434 [INFO] Model loaded from model.ubj
+2025-05-07 18:29:17,181 [INFO] Analyzing token: 5N9mU6xNNtToDtrvMjfFrueExwwZqRdUbqjQwmiKpump
+2025-05-07 18:29:17,209 [INFO] Local copy up-to-date (latest 2025-05-07)
+2025-05-07 18:29:26,625 [INFO] Analyzing token: BLDiYcvm3CLcgZ7XUBPgz6idSAkNmWY6MBbm8Xpjpump
+2025-05-07 18:29:26,636 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 19:17:20,121 [INFO] Model loaded from model.ubj
+2025-05-07 19:18:14,725 [INFO] Analyzing token: 8xhH7tDB6m1akaexEYsn8Qkb58r6EY8MA4t958mipump
+2025-05-07 19:18:14,734 [INFO] Fetching last 300 day(s) for 8xhH7tDB6m1akaexEYsn8Qkb58r6EY8MA4t958mipump
+2025-05-07 19:19:05,918 [INFO] Analyzing token: 7oBYdEhV4GkXC19ZfgAvXpJWp2Rn9pm1Bx2cVNxFpump
+2025-05-07 19:19:05,921 [INFO] Fetching last 3 day(s) for 7oBYdEhV4GkXC19ZfgAvXpJWp2Rn9pm1Bx2cVNxFpump
+2025-05-07 19:21:06,952 [INFO] Analyzing token: CreiuhfwdWCN5mJbMJtA9bBpYQrQF2tCBuZwSPWfpump
+2025-05-07 19:21:06,956 [INFO] Fetching last 3 day(s) for CreiuhfwdWCN5mJbMJtA9bBpYQrQF2tCBuZwSPWfpump
+2025-05-07 19:22:01,481 [INFO] Analyzing token: 5N9mU6xNNtToDtrvMjfFrueExwwZqRdUbqjQwmiKpump
+2025-05-07 19:22:01,486 [INFO] Local copy up-to-date (latest 2025-05-07)
+2025-05-07 19:22:09,578 [INFO] Analyzing token: 8BdXCskcD98NUk9Ciwx6eZqXUD9zB891sSu3rYBSpump
+2025-05-07 19:22:09,580 [INFO] Local copy up-to-date (latest 2025-05-07)
+2025-05-07 19:22:38,299 [INFO] Analyzing token: Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump
+2025-05-07 19:22:38,305 [INFO] Local copy up-to-date (latest 2025-05-06)
+2025-05-07 19:24:00,634 [INFO] Analyzing token: 5241BVJpTDscdFM5bTmeuchBcjXN5sasBywyF7onkJZP
+2025-05-07 19:24:00,644 [INFO] Fetching last 300 day(s) for 5241BVJpTDscdFM5bTmeuchBcjXN5sasBywyF7onkJZP
+2025-05-07 19:24:27,586 [INFO] Analyzing token: 9qriMjPPAJTMCtfQnz7Mo9BsV2jAWTr2ff7yc3JWpump
+2025-05-07 19:24:27,588 [INFO] Fetching last 3 day(s) for 9qriMjPPAJTMCtfQnz7Mo9BsV2jAWTr2ff7yc3JWpump
+2025-05-07 19:25:00,386 [INFO] Analyzing token: 5iVmFCCwJTuuw7p4FrxYoZ1bUNdjg14j7uv5hMsMpump
+2025-05-07 19:25:00,388 [INFO] Local copy up-to-date (latest 2025-05-06)
+{"timestamp": "2025-05-07T13:53:58.243889", "level": "ERROR", "name": "api.model_utils", "message": "Model file ./solana_token_api/assets/model.ubj not found", "location": "/Users/matthewcarter/Documents/repos/claude-pumpfun/hasItPumped/backend/src/solana_token_api/utils/model_utils.py:28", "filename": "model_utils.py", "funcName": "load_model", "created": 1746626038.243794}
+{"timestamp": "2025-05-09T09:14:26.102318", "level": "INFO", "name": "api.model_utils", "message": "Model loaded successfully from ./solana_token_api/assets/model.ubj", "location": "/Users/matthewcarter/Documents/repos/claude-pumpfun/hasItPumped/backend/solana_token_api/utils/model_utils.py:34", "filename": "model_utils.py", "funcName": "load_model", "created": 1746782066.1022348}
