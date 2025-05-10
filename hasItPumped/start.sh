@@ -4,7 +4,7 @@
 cd backend
 echo "Starting FastAPI backend..."
 eval $(poetry env activate)
-python ./run.py
+python ./run.py & 
 BACKEND_PID=$!
 
 # Start frontend
