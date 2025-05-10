@@ -12,7 +12,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Toaster, toast, } from "sonner"
 import { useQuery } from "@tanstack/react-query"
 import { Search, PieChart, TrendingUp, TrendingDown, ChevronRight, AlertCircle, Loader2 } from "lucide-react"
-import TokenChart from "@/components/TokenChart";
 import GeckoChart from "@/components/GeckoChart"
 import { CoinInfo } from "@/components/CoinInfo"
 import Link from "next/link"
@@ -223,8 +222,11 @@ export default function Home() {
 
     loadTokenMetadata();
   }, [activeToken]);
+
+  const showLoadingSkeleton = loading || !activeToken || !meta || metaLoading 
+  const showAnalysisSection = loading || activeToken
   return (
-    <div className="flex min-h-screen flex-col bg-black text-white">
+    <div className="flex min-h-screen flex-col bg-stone-900 text-white">
       {/* Toast container */}
       <div><Toaster position="top-center" richColors /></div>
 
@@ -277,41 +279,36 @@ export default function Home() {
           {/* Token Analysis Result */}
           <div ref={resultRef}>
             {/* Show analysis section when loading or when we have token data */}
-            {(loading || activeToken) && (
+            {(showAnalysisSection) && (
               <>
                 <h2 className="text-2xl font-bold mb-6 text-white">token analysis</h2>
                 <Card className="bg-zinc-800 border-gray-700 overflow-hidden">
                   {/* Show loading skeleton when loading, otherwise show CoinInfo */}
-                  {loading || !activeToken || !meta || metaLoading  ? (
-                    <CardHeader>
-                      <div className="flex justify-between items-center">
-                        <div>
-                          <Skeleton className="h-24 w-24 bg-gray-700 rounded-md" /> {/* Token image */}
-                          <Skeleton className="h-7 w-48 bg-gray-700 mt-2 mb-2" /> {/* Token name */}
-                          <div className="flex flex-col gap-1">
-                            <Skeleton className="h-5 w-20 bg-gray-700" /> {/* Token symbol */}
-                            <div className="flex items-center gap-2">
-                              <Skeleton className="h-4 w-4 bg-gray-700" /> {/* Link icon */}
-                              <Skeleton className="h-4 w-56 bg-gray-700" /> {/* Token address */}
+                  { showLoadingSkeleton  ? (
+                    <>
+                      <CardHeader>
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <Skeleton className="h-24 w-24 bg-gray-700 rounded-md" /> {/* Token image */}
+                            <Skeleton className="h-7 w-48 bg-gray-700 mt-2 mb-2" /> {/* Token name */}
+                            <div className="flex flex-col gap-1">
+                              <Skeleton className="h-5 w-20 bg-gray-700" /> {/* Token symbol */}
+                              <div className="flex items-center gap-1">
+                                <Skeleton className="h-4 w-4 bg-gray-700" /> {/* Link icon */}
+                                <Skeleton className="h-4 w-70 bg-gray-700" /> {/* Token address */}
+                              </div>
                             </div>
                           </div>
+                          <div className="text-right">
+                            <Skeleton className="h-8 w-70 bg-gray-700 rounded-full mb-1" /> {/* Status badge */}
+                            <Skeleton className="h-4 w-32 bg-gray-700 ml-auto" /> {/* Confidence */}
+                          </div>
                         </div>
-                        <div className="text-right">
-                          <Skeleton className="h-10 w-48 bg-gray-700 rounded-full mb-1" /> {/* Status badge */}
-                          <Skeleton className="h-4 w-32 bg-gray-700 ml-auto" /> {/* Confidence */}
-                        </div>
-                      </div>
-                    </CardHeader>
-                  ) : (
-                    <CoinInfo activeToken={activeToken} metadata={meta} />
-                  )}
-
-
-                  <CardContent>
-                    {loading || (metaLoading && !meta?.poolAddress) ? (
-                      <div className="mt-6 space-y-8">
+                      </CardHeader>
+                      <CardContent>
+                      <div className="space-y-8">
                         {/* Chart loading skeleton - matching the iframe dimensions */}
-                        <div className="relative w-full" style={{ minHeight: "600px" }}>
+                        <div className="relative w-full" style={{ minHeight: "600px" }}>  {/* 942 600 */}
                           <div className="absolute inset-0 bg-zinc-700/30 rounded-lg flex flex-col items-center justify-center">
                             <Loader2 className="h-16 w-16 text-gray-500 animate-spin mb-4" />
                             <div className="text-gray-400 text-sm">Loading chart data...</div>
@@ -337,15 +334,24 @@ export default function Home() {
                         </div>
 
                         {/* Analysis summary loading skeleton */}
-                        <div className="p-4 rounded-lg bg-stone-900/50 border border-gray-700">
-                          <Skeleton className="h-6 w-40 bg-gray-700 mb-4" />
-                          <Skeleton className="h-4 w-full bg-gray-700 mb-2" />
-                          <Skeleton className="h-4 w-3/4 bg-gray-700 mb-2" />
+                        <div className="p-4 mt-6 rounded-lg bg-stone-900/50 border border-gray-700"> {/* 942 141   */}
+                          <Skeleton className="h-6 w-40 bg-gray-700 mb-4" /> {/* 909 24  */}
+                          <Skeleton className="h-4 w-full bg-gray-700 mb-2" /> {/* 909 48 */}
+                          <Skeleton className="h-4 w-3/4 bg-gray-700 mb-2" /> {/* 909 20 */}
                           <Skeleton className="h-4 w-full bg-gray-700" />
                         </div>
                       </div>
-                    ) : meta?.poolAddress && (
-                      <>
+                      </CardContent>
+                      <CardFooter className="justify-between border-t border-gray-700 pt-4">
+                        <Skeleton className="h-9 w-44 bg-stone-900/50" /> {/* 176 36 */}
+                        <Skeleton className="h-5 w-44 bg-stone-8800" /> {/* 122 20 */}
+                      </CardFooter>
+
+                    </>
+                  ) : (
+                    <>
+                      <CoinInfo activeToken={activeToken} metadata={meta} />
+                      <CardContent>
                         <GeckoChart poolAddress={meta.poolAddress} />
                         <div className="mt-6 p-4 rounded-lg bg-stone-900/50 border border-gray-700">
                           <h4 className="font-medium mb-2 text-white">analysis summary</h4>
@@ -360,32 +366,31 @@ export default function Home() {
                             note: this is an algorithmic prediction based on historical patterns and should not be considered financial advice.
                           </p>
                         </div>
-                      </>
-                    )}
-                  </CardContent>
+                      </CardContent>
+                      <CardFooter className="justify-between border-t border-gray-700 pt-4">
+                        <Button
+                          variant="outline"
+                          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                          className="bg-transparent border-gray-600 text-gray-300"
+                          disabled={loading}
+                        >
+                          analyze another token
+                        </Button>
 
-                  <CardFooter className="justify-between border-t border-gray-700 pt-4">
-                    <Button
-                      variant="outline"
-                      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                      className="bg-transparent border-gray-600 text-gray-300"
-                      disabled={loading}
-                    >
-                      analyze another token
-                    </Button>
-
-                    {activeToken && (
-                      <a
-                        href={`https://solscan.io/token/${activeToken.mint_address}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-sm text-gray-400 transition-colors"
-                      >
-                        view on solscan
-                        <ChevronRight className="ml-1 h-4 w-4" />
-                      </a>
-                    )}
-                  </CardFooter>
+                        {activeToken && (
+                          <a
+                            href={`https://solscan.io/token/${activeToken.mint_address}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center text-sm text-gray-400 transition-colors"
+                          >
+                            view on solscan
+                            <ChevronRight className="ml-1 h-4 w-4" />
+                          </a>
+                        )}
+                      </CardFooter>
+                    </>
+                  )}
                 </Card>
               </>
             )}
@@ -532,7 +537,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="w-full py-6 bg-gray-950 text-gray-400 mt-auto">
+      <footer className="w-full mt-20 py-6 bg-stone-900 text-gray-400">
         <div className="container px-4 max-w-5xl mx-auto text-center">
           <p className="text-sm">
             has it pumped yet? - solana token analysis tool

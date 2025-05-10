@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from "next/link"
 import { TokenMetadata, TokenResponse } from "@/app/page"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Box, Link as LLink } from "lucide-react"
+import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Link as Llink } from "lucide-react"
 
 interface props {
     activeToken: TokenResponse
@@ -10,8 +10,7 @@ interface props {
 }
 
 export const CoinInfo = ({ activeToken, metadata }: props) => {
-
-    return (<>
+    return (
         <CardHeader>
             <div className="flex justify-between items-center">
                 <div>
@@ -21,9 +20,9 @@ export const CoinInfo = ({ activeToken, metadata }: props) => {
                     </CardTitle>
                     <CardDescription className="text-gray-400 flex-col">
                         <div>${metadata.symbol}</div>
-                            <Link target="_blank" href={`https://pump.fun/coin/${activeToken.mint_address}`} className='flex gap-2 items-center justify-center align-middle'>
-                                <LLink size={15} /> {activeToken.mint_address}
-                            </Link>
+                        <Link target="_blank" href={`https://pump.fun/coin/${activeToken.mint_address}`} className='flex gap-2 items-center justify-center align-middle'>
+                            <Llink size={15} /> {activeToken.mint_address}
+                        </Link>
                     </CardDescription>
                 </div>
                 <div className="text-right">
@@ -39,5 +38,5 @@ export const CoinInfo = ({ activeToken, metadata }: props) => {
                 </div>
             </div>
         </CardHeader>
-    </>)
+    )
 } 
