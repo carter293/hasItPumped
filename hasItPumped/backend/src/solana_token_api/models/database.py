@@ -5,9 +5,9 @@ Database models and connection setup for the Solana Token Analysis API.
 import os
 from pathlib import Path 
 from dotenv import load_dotenv
-from sqlalchemy import Boolean, Column, Date, Float, String, create_engine, func
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import Session, sessionmaker
+from sqlalchemy import Boolean, Column, Date, Float, String, create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import declarative_base
 
 # Load environment variables
 load_dotenv()

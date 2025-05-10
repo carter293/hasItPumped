@@ -8,13 +8,13 @@ from typing import List
 import pandas as pd
 from sqlalchemy import func
 from sqlalchemy.orm import Session
-
+from solana_token_api.models.schema import LatestTokenStats
 from solana_token_api.models.database import TokenData
 
 logger = logging.getLogger("api.database_utils")
 
 
-def get_latest_tokens(db: Session) -> List[TokenData]:
+def get_latest_tokens(db: Session) -> List[LatestTokenStats]:
     """
     Get the most recent record for each token in the database.
 
@@ -33,18 +33,30 @@ def get_latest_tokens(db: Session) -> List[TokenData]:
             order_by=[TokenData.created_at.desc(), TokenData.date.desc()],
         )
         .label("rn"),
+        
+        func.count(TokenData.id)
+        .over(
+            partition_by=TokenData.mint_address
+        )
+        .label("days_of_data"),
     ).subquery()
 
     # Join back to fetch the full rows, keeping rn = 1 only
-    latest_tokens = (
-        db.query(TokenData)
+    result = (
+        db.query(TokenData, latest_per_token_sq.c.days_of_data)
         .join(latest_per_token_sq, TokenData.id == latest_per_token_sq.c.id)
         .filter(latest_per_token_sq.c.rn == 1)
         .order_by(TokenData.created_at.desc())
         .all()
     )
 
+    latest_tokens = [] 
+    for token, days_of_data in result:
+        setattr(token, 'days_of_data', days_of_data)
+        latest_tokens.append(token)
+
     logger.debug(f"Found {len(latest_tokens)} unique tokens in database")
+
     return latest_tokens
 
 

@@ -28,6 +28,13 @@ class TokenDataPoint(BaseModel):
     volume: float
 
 
+class LatestTokenStats(TokenDataPoint):
+    """Response model for latest token statitics"""
+    mint_address: str
+    created_at: str
+    is_pre_peak: bool
+    days_of_data: int
+
 class PoolResponse(BaseModel):
     """Response model for pool information"""
 

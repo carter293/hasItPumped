@@ -3,8 +3,8 @@
 # Start backend
 cd backend
 echo "Starting FastAPI backend..."
-source venv/bin/activate
-uvicorn main:app --reload --host 0.0.0.0 --port 8000 &
+eval $(poetry env activate)
+python ./run.py
 BACKEND_PID=$!
 
 # Start frontend

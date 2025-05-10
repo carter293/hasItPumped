@@ -27,8 +27,8 @@ def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
     try:
         df["date"] = pd.to_datetime(
             df["date"],
-            format="mixed",  # pandas ≥2.0
-            errors="coerce",  # bad rows → NaT (then dropped)
+            format="mixed",
+            errors="coerce",
             utc=True,
         )
     except Exception as e:

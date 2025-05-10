@@ -4,35 +4,35 @@ Solana Token Analysis API
 Main application module with FastAPI endpoints.
 """
 
-import logging
 import os
+import logging
 from datetime import datetime, timezone
 from typing import List
 
-import pandas as pd
-import xgboost as xgb
-from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Depends, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
+import pandas as pd
+import xgboost as xgb
 
 # Local imports
-from solana_token_api.models.database import TokenData, get_db
+from solana_token_api.models.database import get_db, TokenData
 from solana_token_api.models.schema import (
-    DatabaseStats,
-    PoolResponse,
-    TokenDataPoint,
     TokenRequest,
     TokenResponse,
+    TokenDataPoint,
+    DatabaseStats,
     TokenSummary,
+    PoolResponse,
 )
+from solana_token_api.utils.logger import setup_logger
 from solana_token_api.utils.data_fetcher import get_solana_dex_trade_data
+from solana_token_api.utils.feature_engineering import engineer_features
 from solana_token_api.utils.database_utils import (
     get_latest_tokens,
     update_token_predictions,
 )
-from solana_token_api.utils.feature_engineering import engineer_features
-from solana_token_api.utils.logger import setup_logger
 from solana_token_api.utils.model_utils import load_model, make_prediction
 
 # Configure application logging
@@ -82,12 +82,6 @@ def get_stats(db: Session = Depends(get_db)):
     # Get 10 most recent tokens
     recent_tokens = []
     for token in latest_tokens[:10]:
-        # Count days of data for this token
-        days_query = (
-            db.query(TokenData)
-            .filter(TokenData.mint_address == token.mint_address)
-            .count()
-        )
 
         recent_tokens.append(
             TokenSummary(
@@ -99,7 +93,7 @@ def get_stats(db: Session = Depends(get_db)):
                     token.is_pre_peak if token.is_pre_peak is not None else False
                 ),
                 current_price=token.close if token.close is not None else 0.0,
-                days_of_data=days_query,
+                days_of_data=token.days_of_data,
                 volume_24h=token.volume if token.volume is not None else 0.0,
             )
         )
