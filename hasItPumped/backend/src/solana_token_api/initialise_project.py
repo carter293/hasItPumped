@@ -1,17 +1,24 @@
-
-
 import os
 import json
 import argparse
 import logging
 from datetime import datetime
 from pathlib import Path
-from setuptools import setup, find_packages
 from dotenv import load_dotenv
 import sys
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'src')))
+
+# Get the absolute path to the root of the project
+project_root = Path(__file__).parent.parent.parent.absolute()
+
+# Add src to the Python path
+sys.path.insert(0, str(project_root / 'src'))
+
 from solana_token_api.models.database import init_db, SessionLocal, TokenData
 from solana_token_api.utils.logger import setup_logger
+
+# Ensure assets directory exists
+assets_dir = project_root / 'src' / 'solana_token_api' / 'assets'
+assets_dir.mkdir(exist_ok=True)
 
 def parse_args():
     """Parse command line arguments"""
@@ -19,7 +26,7 @@ def parse_args():
     parser.add_argument(
         "--data-file", 
         type=str,
-        default="data/ohlcv_data.json",
+        default=str(project_root / "data" / "ohlcv_data.json"),
         help="Path to the JSON data file to load (default: data/ohlcv_data.json)"
     )
     parser.add_argument(
@@ -31,20 +38,33 @@ def parse_args():
 
 def load_existing_data(data_file, logger):
     """Load token data from a JSON file"""
-    if not os.path.exists(data_file):
+    data_path = Path(data_file)
+    if not data_path.exists():
         logger.error(f"File {data_file} not found")
-        return 0
+        # Try alternative locations
+        alt_paths = [
+            project_root / "data" / "ohlcv_data.json",
+            project_root / "backend" / "data" / "ohlcv_data.json"
+        ]
+        
+        for alt_path in alt_paths:
+            if alt_path.exists():
+                logger.info(f"Found data file at alternative location: {alt_path}")
+                data_path = alt_path
+                break
+        else:
+            return 0
     
-    logger.info(f"Loading data from {data_file}")
+    logger.info(f"Loading data from {data_path}")
     
     try:
-        with open(data_file, 'r') as f:
+        with open(data_path, 'r') as f:
             data = json.load(f)
     except json.JSONDecodeError:
-        logger.error(f"Failed to parse {data_file} as JSON")
+        logger.error(f"Failed to parse {data_path} as JSON")
         return 0
     except Exception as e:
-        logger.error(f"Error reading {data_file}: {str(e)}")
+        logger.error(f"Error reading {data_path}: {str(e)}")
         return 0
     
     # Create database session
@@ -110,10 +130,8 @@ if __name__ == "__main__":
     load_dotenv()
     
     # Create logs directory if it doesn't exist
-    Path("solana_token_api/logs").mkdir(exist_ok=True)
-    
-    # Create data directory if it doesn't exist
-    Path("solana_token_api/data").mkdir(exist_ok=True)
+    logs_dir = project_root / "logs"
+    logs_dir.mkdir(exist_ok=True)
     
     # Set up logging
     logger = setup_logger("setup")
@@ -121,10 +139,24 @@ if __name__ == "__main__":
     # Parse arguments
     args = parse_args()
     
+    # Print current working directory and database path for debugging
+    logger.info(f"Current working directory: {os.getcwd()}")
+    
+    # Import database module to get path
+    from solana_token_api.models.database import db_path
+    logger.info(f"Database will be created at: {db_path}")
+    
     # Initialize the database
     logger.info("Initializing database")
     init_db()
     logger.info("Database initialized successfully")
+    
+    # Verify the database was created
+    db_file = Path(db_path.replace('sqlite:///', ''))
+    if db_file.exists():
+        logger.info(f"Verified database file exists at: {db_file}")
+    else:
+        logger.warning(f"Database file not found at expected location: {db_file}")
     
     # Load data if specified
     if args.data_file:

@@ -12,14 +12,24 @@ from sqlalchemy.orm import declarative_base
 # Load environment variables
 load_dotenv()
 
-# Get database URL from environment or use default
+# Get the absolute path to the assets directory
 pkg_root = Path(__file__).parent.parent
-db_path = str(pkg_root / 'assets' / 'solana_tokens.db')
+assets_dir = pkg_root / 'assets'
+assets_dir.mkdir(exist_ok=True)  # Ensure the assets directory exists
 
+db_path = str(assets_dir / 'solana_tokens.db')
+
+# Create absolute filepath for the database
 DATABASE_URL = os.getenv(
     "DATABASE_URL", f"sqlite:///{db_path}"
 )
-engine = create_engine(DATABASE_URL)
+
+print(f"Database will be created at: {db_path}")
+
+engine = create_engine(
+    DATABASE_URL, 
+    connect_args={"check_same_thread": False}  # Needed for SQLite
+)
 
 # Create session factory
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -47,7 +57,17 @@ class TokenData(Base):
 
 def init_db():
     """Initialize the database tables"""
+    # Ensure the directory exists
+    os.makedirs(os.path.dirname(db_path), exist_ok=True)
+    
+    # Create all tables
     Base.metadata.create_all(bind=engine)
+    
+    # Verify the file was created
+    if os.path.exists(db_path):
+        print(f"Database file created at: {db_path}")
+    else:
+        print(f"WARNING: Database file not created at: {db_path}")
 
 
 def get_db():
