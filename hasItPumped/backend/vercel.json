@@ -1,18 +1,18 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "src/solana_token_api/main.py",
-        "use": "@vercel/python"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "src/solana_token_api/main.py"
-      }
-    ],
-    "env": {
-      "APP_MODULE": "src.solana_token_api.main:app"
+  "version": 2,
+  "builds": [
+    {
+      "src": "run.py",
+      "use": "@vercel/python"
     }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "run.py"
+    }
+  ],
+  "env": {
+    "PYTHONPATH": "."
   }
+}

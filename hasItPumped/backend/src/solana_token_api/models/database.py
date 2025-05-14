@@ -8,10 +8,10 @@ from dotenv import load_dotenv
 from sqlalchemy import Boolean, Column, Date, Float, String, create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import declarative_base
+from sqlalchemy.pool import NullPool
 
 # Load environment variables
 load_dotenv()
-
 
 pkg_root = Path(__file__).parent.parent
 assets_dir = pkg_root / 'assets'
@@ -20,23 +20,33 @@ assets_dir.mkdir(exist_ok=True)  # Ensure the assets directory exists
 db_path = str(assets_dir / 'solana_tokens.db')
 
 # Get DATABASE_URL from environment variable or use SQLite default for local development
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./token_data.db")
+DATABASE_URL = os.getenv("DATABASE_URL", f"sqlite:///{db_path}")
 
-# Support Heroku-style PostgreSQL URLs (if deploying to platforms that use this format)
-if DATABASE_URL.startswith("postgres://"):
+# Support Heroku-style PostgreSQL URLs
+if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
-# Create database engine
-engine = create_engine(
-    DATABASE_URL, connect_args={"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
-)
+# Configure engine based on database type
+connect_args = { }
+if DATABASE_URL.startswith("sqlite"):
+    connect_args["check_same_thread"] = False
+
+# Create database engine with explicit dialect name for PostgreSQL
+if DATABASE_URL.startswith("postgresql"):
+    engine = create_engine(
+        DATABASE_URL, 
+        connect_args=connect_args,
+        client_encoding='utf8',
+        poolclass=NullPool,
+    )
+else:
+    engine = create_engine(DATABASE_URL, connect_args=connect_args)
 
 # Create database session
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Create base class for database models
 Base = declarative_base()
-
 
 class TokenData(Base):
     """SQLAlchemy model for token price data"""
