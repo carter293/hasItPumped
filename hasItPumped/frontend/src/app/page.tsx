@@ -1,14 +1,12 @@
 "use client"
 
-import { useState, useEffect, useRef, act } from "react"
+import { useState, useEffect, useRef } from "react"
 import Image from 'next/image'
-import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Progress } from "@/components/ui/progress"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Toaster, toast, } from "sonner"
 import { useQuery } from "@tanstack/react-query"
 import { Search, PieChart, TrendingUp, TrendingDown, ChevronRight, AlertCircle, Loader2 } from "lucide-react"
@@ -95,19 +93,6 @@ interface DatabaseStats {
   recent_tokens: TokenSummary[]
 }
 
-interface GeckoPoolResponse {
-  data: {
-    id: string;
-    attributes: {
-      address: string;
-    };
-  }[];
-}
-
-function isDefined<T>(x: T | undefined): x is T {
-  return x !== undefined;
-}
-
 
 export default function Home() {
   const [mintAddress, setMintAddress] = useState("")
@@ -116,7 +101,6 @@ export default function Home() {
   const [loading, setLoading] = useState(false)
   const [metaLoading, setMetaLoading] = useState(false)
   const resultRef = useRef<HTMLDivElement>(null)
-  const router = useRouter()
 
   // Fetch stats for the dashboard
   const { data: stats, isLoading: statsLoading, refetch: refetchStats } = useQuery<DatabaseStats>({
@@ -165,15 +149,15 @@ export default function Home() {
         } else {
           toast.error(`${error.detail}` || "Failed to analyze token")
         }
-        setActiveToken(_ => null)
+        setActiveToken(null)
       } else {
         const data = await response.json()
         setActiveToken(data)
         refetchStats()
       }
-    } catch (error: any) {
+    } catch (error) {
       console.error(error)
-      setActiveToken(_ => null)
+      setActiveToken(null)
     } finally {
       setLoading(false)
     }
@@ -213,8 +197,9 @@ export default function Home() {
         } else if (name && symbol && image_url && poolAddress) {
           setMeta({ name, symbol, imageUrl: image_url, poolAddress })
         }
-      } catch (err: any) {
-        toast.error(err.message || 'Unexpected error fetching token metadata');
+      } catch (err) {
+        const errorMessage = err instanceof Error ? err.message : "Unexpected error fetching token metadata"
+        toast.error(errorMessage);
       } finally {
         setMetaLoading(false)
       }
@@ -242,7 +227,7 @@ export default function Home() {
           />
           <h1 className="text-4xl md:text-6xl font-bold mb-4">has it pumped?</h1>
           <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            analyze <span className="italic">*graduated</span> <Link target="_blank" href={"https://pump.fun"}> pump.fun</Link> solana tokens and predict if they've already peaked or still have room to grow
+            analyze <span className="italic">*graduated</span> <Link target="_blank" href={"https://pump.fun"}> pump.fun</Link> solana tokens and predict if they&apos;ve already peaked or still have room to grow
           </p>
 
           <div className="max-w-md mx-auto">

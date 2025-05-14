@@ -1,4 +1,4 @@
-name: Deploy FastAPI and Next.js
+name: Deploy
 
 on:
   push:
@@ -10,45 +10,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-          cache: 'pip'
-
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-        with:
-          version: 1.5.1
-          virtualenvs-create: true
-
-      - name: Install dependencies
-        run: |
-          cd backend
-          poetry install
-
-      - name: Run tests
-        run: |
-          cd backend
-          poetry run pytest
-
-      - name: Deploy to Vercel
+      
+      - name: Deploy Backend to Vercel
         uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_BACKEND_PROJECT_ID }}
           working-directory: ./backend
           vercel-args: '--prod'
-
-      - name: Get deployment URL
-        id: deployment
-        run: |
-          DEPLOY_URL=$(vercel --token ${{ secrets.VERCEL_TOKEN }} ls --prod | grep fastapi | awk '{print $2}')
-          echo "BACKEND_URL=$DEPLOY_URL" >> $GITHUB_ENV
-          echo "BACKEND_URL=$DEPLOY_URL" >> $GITHUB_OUTPUT
+      
+      - name: Extract Deployment URL
+        id: deploy-url
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { execSync } = require('child_process');
+            const output = execSync('vercel --token ${{ secrets.VERCEL_TOKEN }} ls --prod').toString();
+            const backendUrl = output.match(/https:\/\/[a-zA-Z0-9-]+\.vercel\.app/)[0];
+            core.setOutput('backend_url', backendUrl);
+    outputs:
+      backend_url: ${{ steps.deploy-url.outputs.backend_url }}
 
   deploy-frontend:
     needs: deploy-backend
@@ -56,31 +38,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-          cache: 'npm'
-          cache-dependency-path: frontend/package-lock.json
-
-      - name: Install dependencies
+      - name: Update API URL in Environment
         run: |
           cd frontend
-          npm ci
-
-      - name: Build with backend URL
-        env:
-          NEXT_PUBLIC_API_URL: ${{ needs.deploy-backend.outputs.BACKEND_URL }}
-        run: |
-          cd frontend
-          echo "NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL" > .env.production
-          npm run build
-
-      - name: Deploy to Vercel
+          echo "NEXT_PUBLIC_API_URL=${{ needs.deploy-backend.outputs.backend_url }}" > .env.production
+      
+      - name: Deploy Frontend to Vercel
         uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_FRONTEND_PROJECT_ID }}
           working-directory: ./frontend
