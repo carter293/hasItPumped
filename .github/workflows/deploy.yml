@@ -6,48 +6,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy-backend:
+  deploy:
+    name: Deploy app
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Deploy Backend to Vercel
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_BACKEND_PROJECT_ID }}
-          working-directory: ./backend
-          vercel-args: '--prod'
-      
-      - name: Extract Deployment URL
-        id: deploy-url
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const { execSync } = require('child_process');
-            const output = execSync('vercel --token ${{ secrets.VERCEL_TOKEN }} ls --prod').toString();
-            const backendUrl = output.match(/https:\/\/[a-zA-Z0-9-]+\.vercel\.app/)[0];
-            core.setOutput('backend_url', backendUrl);
-    outputs:
-      backend_url: ${{ steps.deploy-url.outputs.backend_url }}
-
-  deploy-frontend:
-    needs: deploy-backend
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      
-      - name: Update API URL in Environment
-        run: |
-          cd frontend
-          echo "NEXT_PUBLIC_API_URL=${{ needs.deploy-backend.outputs.backend_url }}" > .env.production
-      
-      - name: Deploy Frontend to Vercel
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_FRONTEND_PROJECT_ID }}
-          working-directory: ./frontend
-          vercel-args: '--prod'
+      - uses: actions/checkout@v4
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}

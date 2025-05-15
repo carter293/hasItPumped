@@ -58,7 +58,7 @@ app.add_middleware(
 )
 
 
-@app.get("/")
+@app.get("/healthcheck")
 def read_root():
     """API health check endpoint"""
     return {"status": "healthy", "message": "Solana Token Analysis API"}
