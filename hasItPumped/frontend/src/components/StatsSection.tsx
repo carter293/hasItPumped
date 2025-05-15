@@ -1,8 +1,8 @@
 import { DatabaseStats } from "@/app/page";
 import { Skeleton } from "./ui/skeleton";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Progress } from "@radix-ui/react-progress";
 import { PieChart, TrendingDown, TrendingUp } from "lucide-react";
+import { Progress } from "./ui/progress";
 
 interface StatsSectionProps {
     stats: DatabaseStats;
@@ -22,7 +22,7 @@ export const StatsSection = ({ stats, statsLoading }: StatsSectionProps) => {
             </>
           ) : (
             <>
-              <Card className="bg-zinc-800 border-gray-700">
+              <Card className="bg-zinc-800 border-gray-700 py-3">
                 <CardHeader className="pb-2 px-4 pt-4">
                   <CardTitle className="text-lg text-white">total tokens</CardTitle>
                 </CardHeader>
@@ -35,7 +35,7 @@ export const StatsSection = ({ stats, statsLoading }: StatsSectionProps) => {
                 </CardContent>
               </Card>
   
-              <Card className="bg-zinc-800 border-gray-700">
+              <Card className="bg-zinc-800 border-gray-700 py-3" >
                 <CardHeader className="pb-2 px-4 pt-4">
                   <CardTitle className="text-lg text-white">pre-pump tokens</CardTitle>
                 </CardHeader>
@@ -54,7 +54,7 @@ export const StatsSection = ({ stats, statsLoading }: StatsSectionProps) => {
                 </CardContent>
               </Card>
   
-              <Card className="bg-zinc-800 border-gray-700 sm:col-span-2 lg:col-span-1">
+              <Card className="bg-zinc-800 border-gray-700 sm:col-span-2 lg:col-span-1 py-3">
                 <CardHeader className="pb-2 px-4 pt-4">
                   <CardTitle className="text-lg text-white">pumped tokens</CardTitle>
                 </CardHeader>
@@ -63,7 +63,7 @@ export const StatsSection = ({ stats, statsLoading }: StatsSectionProps) => {
                     {stats?.post_peak_count || 0}
                   </p>
                   <Progress
-                    value={stats ? (stats.post_peak_count / Math.max(1, stats.total_tokens) * 100) : 0}
+                     value={stats ? (stats.post_peak_count / Math.max(1, stats.total_tokens) * 100) : 0}
                     className="mt-2 bg-gray-700 h-2"
                   />
                   <div className="mt-2 flex items-center text-xs sm:text-sm text-gray-400">

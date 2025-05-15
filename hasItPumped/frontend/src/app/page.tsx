@@ -4,15 +4,16 @@ import { useState, useEffect, useRef } from "react"
 import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
-import { Progress } from "@/components/ui/progress"
 import { Toaster, toast, } from "sonner"
 import { useQuery } from "@tanstack/react-query"
-import { Search, PieChart, TrendingUp, TrendingDown, ChevronRight, AlertCircle, Loader2 } from "lucide-react"
+import { Search, ChevronRight, Loader2 } from "lucide-react"
 import GeckoChart from "@/components/GeckoChart"
 import { CoinInfo } from "@/components/CoinInfo"
 import Link from "next/link"
+import { StatsSection } from "@/components/StatsSection"
+import { RecentTokensSection } from "@/components/RecentTokensSection"
 
 // Define types for tokens
 interface TokenDataPoint {
@@ -49,44 +50,6 @@ export interface TokenMetadata {
   imageUrl: string
 }
 
-
-interface GeckoMetadataResponse {
-  data: {
-    id?: string
-    type?: string
-    attributes: {
-      address?: string
-      name?: string
-      symbol?: string
-      decimals?: string
-      image_url?: string
-      coingecko_coin_id?: string
-      total_supply?: string
-      price_usd?: string
-      fdv_usd?: string
-      total_reserve_in_usd?: string
-      volume_usd: {
-        h24?: string
-      },
-      market_cap_usd?: string
-    }
-    relationships: {
-      top_pools: {
-        data: [
-          {
-            id?: string
-            type?: string
-          },
-          {
-            id?: string
-            type?: string
-          }
-        ]
-      }
-    }
-  },
-}
-
 export interface TokenSummary {
   mint_address: string
   last_updated: string
@@ -113,7 +76,7 @@ export default function Home() {
   const resultRef = useRef<HTMLDivElement>(null)
 
   // Fetch stats for the dashboard
-  const { data: stats, isLoading: statsLoading, refetch: refetchStats } = useQuery<DatabaseStats>({
+  const { data: stats, isLoading: statsLoading, refetch: refetchStats } = useQuery({
     queryKey: ['stats'],
     queryFn: async () => {
       const url = `${process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000'}/stats`;
@@ -123,7 +86,7 @@ export default function Home() {
     },
   });
 
-  // Function to analyze token
+  // Function to analyze token (unchanged)
   async function analyzeToken(address: string) {
     if (!address.trim()) {
       toast.error("Please enter a mint address")
@@ -138,7 +101,6 @@ export default function Home() {
         resultRef.current.scrollIntoView({ behavior: 'smooth' })
       }
     }, 100)
-
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/analyze_token`, {
         method: "POST",
@@ -173,8 +135,7 @@ export default function Home() {
     }
   }
 
-
-
+  // Load token metadata (unchanged)
   useEffect(() => {
     async function loadTokenMetadata() {
       if (!activeToken?.mint_address) return;
@@ -188,11 +149,11 @@ export default function Home() {
 
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-        const json: GeckoMetadataResponse = await res.json();
+        const json = await res.json();
         const { name, symbol, image_url } = json.data.attributes
-        console.log(json)
-        const poolAddressId = json.data.relationships.top_pools?.data[0].id
+        const poolAddressId = json.data.relationships.top_pools?.data[0]?.id
         const poolAddress = poolAddressId?.split('solana_')[1]
+        
         if (!poolAddress) {
           toast.error('No pool found');
         } else if (name && symbol && image_url && poolAddress) {
@@ -211,33 +172,34 @@ export default function Home() {
 
   const showLoadingSkeleton = loading || !activeToken || !meta || metaLoading 
   const showAnalysisSection = loading || activeToken
+  
   return (
     <div className="flex min-h-screen flex-col bg-stone-900 text-white">
       {/* Toast container */}
       <div><Toaster position="top-center" richColors /></div>
 
-      {/* Hero section */}
+      {/* Hero section - Made more mobile-friendly */}
       <section className="w-full bg-stone-900">
-        <div className="container px-4 py-16 md:py-24 max-w-5xl mx-auto text-center flex-col justify-center items-center">
+        <div className="container px-4 py-10 md:py-16 max-w-5xl mx-auto text-center flex-col justify-center items-center">
           <Image
-            className=" mx-auto"
+            className="mx-auto w-32 h-32 md:w-48 md:h-48"
             src="/pumped.png"
-            width={200}
-            height={200}
-            alt="Picture of the author"
+            width={150}
+            height={150}
+            alt="has it pumped logo"
           />
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">has it pumped?</h1>
-          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto opacity-90">
+          <h1 className="text-3xl md:text-5xl font-bold mb-3 md:mb-4">has it pumped?</h1>
+          <p className="text-base md:text-lg mb-6 md:mb-8 max-w-2xl mx-auto opacity-90">
             analyze <span className="italic">*graduated</span> <Link target="_blank" href={"https://pump.fun"}> pump.fun</Link> solana tokens and predict if they&apos;ve already peaked or still have room to grow
           </p>
 
-          <div className="max-w-md mx-auto">
-            <div className="flex space-x-2">
+          <div className="w-full max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row gap-2">
               <div className="relative flex-grow">
                 <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                 <Input
                   placeholder="enter solana token mint address"
-                  className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-gray-300 h-12 rounded-md"
+                  className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-gray-300 h-12 rounded-md w-full"
                   value={mintAddress}
                   onChange={(e) => setMintAddress(e.target.value)}
                   onKeyDown={(e) => {
@@ -250,7 +212,7 @@ export default function Home() {
               <Button
                 onClick={() => analyzeToken(mintAddress)}
                 disabled={loading}
-                className="h-12 px-6 bg-green-500 hover:bg-green-600 text-white rounded-md"
+                className="h-12 px-6 bg-green-500 hover:bg-green-600 text-white rounded-md sm:w-auto w-full"
               >
                 {loading ? 'analyzing...' : 'analyze'}
               </Button>
@@ -260,107 +222,98 @@ export default function Home() {
       </section>
 
       <section className="w-full bg-stone-900">
-        <div className="container px-6 max-w-5xl mx-auto">
+        <div className="container px-4 max-w-5xl mx-auto">
 
           {/* Token Analysis Result */}
           <div ref={resultRef}>
             {/* Show analysis section when loading or when we have token data */}
             {(showAnalysisSection) && (
               <>
-                <h2 className="text-2xl font-bold mb-6 text-white">token analysis</h2>
+                <h2 className="text-2xl font-bold mb-4 md:mb-6 text-white">token analysis</h2>
                 <Card className="bg-zinc-800 border-gray-700 overflow-hidden">
                   {/* Show loading skeleton when loading, otherwise show CoinInfo */}
-                  { showLoadingSkeleton  ? (
+                  { showLoadingSkeleton ? (
                     <>
-                      <CardHeader>
-                        <div className="flex justify-between items-center">
-                          <div>
-                            <Skeleton className="h-24 w-24 bg-gray-700 rounded-md" /> {/* Token image */}
-                            <Skeleton className="h-7 w-48 bg-gray-700 mt-2 mb-2" /> {/* Token name */}
-                            <div className="flex flex-col gap-1">
-                              <Skeleton className="h-5 w-20 bg-gray-700" /> {/* Token symbol */}
-                              <div className="flex items-center gap-1">
-                                <Skeleton className="h-4 w-4 bg-gray-700" /> {/* Link icon */}
-                                <Skeleton className="h-4 w-70 bg-gray-700" /> {/* Token address */}
-                              </div>
+                      <CardHeader className="p-4">
+                        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+                          <div className="flex items-center gap-3">
+                            <Skeleton className="h-16 w-16 bg-gray-700 rounded-md flex-shrink-0" /> {/* Token image */}
+                            <div>
+                              <Skeleton className="h-6 w-32 bg-gray-700 mb-2" /> {/* Token name */}
+                              <Skeleton className="h-4 w-20 bg-gray-700 mb-1" /> {/* Token symbol */}
+                              <Skeleton className="h-3 w-28 bg-gray-700" /> {/* Token address */}
                             </div>
                           </div>
-                          <div className="text-right">
-                            <Skeleton className="h-8 w-70 bg-gray-700 rounded-full mb-1" /> {/* Status badge */}
-                            <Skeleton className="h-4 w-32 bg-gray-700 ml-auto" /> {/* Confidence */}
+                          <div className="mt-2 md:mt-0 md:text-right">
+                            <Skeleton className="h-8 w-32 md:w-48 bg-gray-700 rounded-full mb-1 mx-auto md:ml-auto" /> {/* Status badge */}
+                            <Skeleton className="h-4 w-24 bg-gray-700 mx-auto md:ml-auto" /> {/* Confidence */}
                           </div>
                         </div>
                       </CardHeader>
-                      <CardContent>
-                      <div className="space-y-8">
-                        {/* Chart loading skeleton - matching the iframe dimensions */}
-                        <div className="relative w-full" style={{ minHeight: "600px" }}>  {/* 942 600 */}
-                          <div className="absolute inset-0 bg-zinc-700/30 rounded-lg flex flex-col items-center justify-center">
-                            <Loader2 className="h-16 w-16 text-gray-500 animate-spin mb-4" />
-                            <div className="text-gray-400 text-sm">Loading chart data...</div>
+                      <CardContent className="p-4">
+                        <div className="space-y-6">
+                          {/* Chart loading skeleton - matching the iframe dimensions */}
+                          <div className="relative w-full rounded-lg border border-gray-700" style={{ height: window.innerWidth < 640 ? '300px' : '500px' }}>
+                            <div className="absolute inset-0 bg-zinc-700/30 rounded-lg flex flex-col items-center justify-center">
+                              <Loader2 className="h-12 w-12 text-gray-500 animate-spin mb-4" />
+                              <div className="text-gray-400 text-sm">Loading chart data...</div>
 
-                            {/* Simulated chart skeleton with gradient lines */}
-                            <div className="absolute inset-0 overflow-hidden opacity-20">
-                              <div className="w-full h-full flex flex-col justify-end">
-                                <div className="h-1/2 w-full relative">
-                                  <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
-                                  <div className="absolute bottom-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
-                                  <div className="absolute bottom-2/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
-                                  <div className="absolute bottom-3/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
-                                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
-
-                                  {/* Vertical grid lines */}
-                                  <div className="absolute top-0 bottom-0 left-1/4 w-px bg-gradient-to-b from-transparent via-gray-400 to-transparent"></div>
-                                  <div className="absolute top-0 bottom-0 left-2/4 w-px bg-gradient-to-b from-transparent via-gray-400 to-transparent"></div>
-                                  <div className="absolute top-0 bottom-0 left-3/4 w-px bg-gradient-to-b from-transparent via-gray-400 to-transparent"></div>
+                              {/* Simulated chart skeleton with gradient lines */}
+                              <div className="absolute inset-0 overflow-hidden opacity-20">
+                                <div className="w-full h-full flex flex-col justify-end">
+                                  <div className="h-1/2 w-full relative">
+                                    <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+                                    <div className="absolute bottom-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+                                    <div className="absolute bottom-2/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+                                    <div className="absolute bottom-3/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+                                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div>
 
-                        {/* Analysis summary loading skeleton */}
-                        <div className="p-4 mt-6 rounded-lg bg-stone-900/50 border border-gray-700"> {/* 942 141   */}
-                          <Skeleton className="h-6 w-40 bg-gray-700 mb-4" /> {/* 909 24  */}
-                          <Skeleton className="h-4 w-full bg-gray-700 mb-2" /> {/* 909 48 */}
-                          <Skeleton className="h-4 w-3/4 bg-gray-700 mb-2" /> {/* 909 20 */}
-                          <Skeleton className="h-4 w-full bg-gray-700" />
+                          {/* Analysis summary loading skeleton */}
+                          <div className="p-4 rounded-lg bg-stone-900/50 border border-gray-700">
+                            <Skeleton className="h-5 w-40 bg-gray-700 mb-3" />
+                            <Skeleton className="h-4 w-full bg-gray-700 mb-2" />
+                            <Skeleton className="h-4 w-3/4 bg-gray-700 mb-2" />
+                            <Skeleton className="h-4 w-full bg-gray-700" />
+                          </div>
                         </div>
-                      </div>
                       </CardContent>
-                      <CardFooter className="justify-between border-t border-gray-700 pt-4">
-                        <Skeleton className="h-9 w-44 bg-stone-900/50" /> {/* 176 36 */}
-                        <Skeleton className="h-5 w-44 bg-stone-8800" /> {/* 122 20 */}
+                      <CardFooter className="justify-between border-t border-gray-700 p-4">
+                        <Skeleton className="h-9 w-36 bg-gray-700 rounded" />
+                        <Skeleton className="h-5 w-32 bg-gray-700" />
                       </CardFooter>
-
                     </>
                   ) : (
                     <>
                       <CoinInfo activeToken={activeToken} metadata={meta} />
-                      <CardContent>
+                      <CardContent className="p-4">
                         <GeckoChart poolAddress={meta.poolAddress} />
                         <div className="mt-6 p-4 rounded-lg bg-stone-900/50 border border-gray-700">
                           <h4 className="font-medium mb-2 text-white">analysis summary</h4>
-                          <p className="text-gray-300">
+                          <p className="text-gray-300 text-sm md:text-base">
                             this token appears to be <strong>{activeToken?.is_pre_peak ? "pre-peak" : "post-peak"}</strong>.
                             {activeToken?.is_pre_peak
                               ? " the model predicts it has not reached its maximum price yet and may have potential for future growth."
                               : " the model predicts it has already reached its peak price and may not return to previous highs."
                             }
                           </p>
-                          <p className="text-sm text-gray-500 mt-2">
+                          <p className="text-xs md:text-sm text-gray-500 mt-2">
                             note: this is an algorithmic prediction based on historical patterns and should not be considered financial advice.
                           </p>
                         </div>
                       </CardContent>
-                      <CardFooter className="justify-between border-t border-gray-700 pt-4">
+                      <CardFooter className="justify-between border-t border-gray-700 p-4">
                         <Button
                           variant="outline"
                           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                          className="bg-transparent border-gray-600 text-gray-300"
+                          className="bg-transparent border-gray-600 text-gray-300 text-sm"
                           disabled={loading}
                         >
-                          analyze another token
+                          analyze another
                         </Button>
 
                         {activeToken && (
@@ -368,7 +321,7 @@ export default function Home() {
                             href={`https://solscan.io/token/${activeToken.mint_address}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center text-sm text-gray-400 transition-colors"
+                            className="inline-flex items-center text-xs md:text-sm text-gray-400 transition-colors"
                           >
                             view on solscan
                             <ChevronRight className="ml-1 h-4 w-4" />
@@ -382,148 +335,19 @@ export default function Home() {
             )}
           </div>
 
-          {/* Stats section */}
-          <h2 className="text-2xl font-bold mb-6 mt-6 text-white">stats</h2>
+          <StatsSection stats={stats} statsLoading={statsLoading} />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {statsLoading ? (
-              <>
-                <Skeleton className="h-32 bg-zinc-800" />
-                <Skeleton className="h-32 bg-zinc-800" />
-                <Skeleton className="h-32 bg-zinc-800" />
-              </>
-            ) : (
-              <>
-                <Card className="bg-zinc-800 border-gray-700">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-lg text-white">total tokens</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-3xl font-bold text-white">{stats?.total_tokens || 0}</p>
-                    <div className="mt-2 flex items-center text-sm text-gray-400">
-                      <PieChart className="mr-1 h-4 w-4" />
-                      <span>tokens analyzed in database</span>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-zinc-800 border-gray-700">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-lg text-white">pre-pump tokens</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-3xl font-bold text-green-400">
-                      {stats?.pre_peak_count || 0}
-                    </p>
-                    <Progress
-                      value={stats ? (stats.pre_peak_count / Math.max(1, stats.total_tokens) * 100) : 0}
-                      className="mt-2 bg-gray-700"
-                    />
-                    <div className="mt-2 flex items-center text-sm text-gray-400">
-                      <TrendingUp className="mr-1 h-4 w-4 text-green-400" />
-                      <span>still have potential for growth</span>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-zinc-800 border-gray-700">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-lg text-white">pumped tokens</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-3xl font-bold text-red-400">
-                      {stats?.post_peak_count || 0}
-                    </p>
-                    <Progress
-                      value={stats ? (stats.post_peak_count / Math.max(1, stats.total_tokens) * 100) : 0}
-                      className="mt-2 bg-gray-700"
-                    />
-                    <div className="mt-2 flex items-center text-sm text-gray-400">
-                      <TrendingDown className="mr-1 h-4 w-4 text-red-400" />
-                      <span>already reached their peak</span>
-                    </div>
-                  </CardContent>
-                </Card>
-              </>
-            )}
-          </div>
-          {/* Recent tokens */}
-          <h3 className="text-xl font-bold mt-10 mb-4 text-white">recent tokens</h3>
-
-          <div className="overflow-x-auto rounded-lg border border-gray-700">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-zinc-800 border-b border-gray-700">
-                  <th className="text-left py-3 px-4 text-gray-400">token address</th>
-                  <th className="text-left py-3 px-4 text-gray-400">last updated</th>
-                  <th className="text-left py-3 px-4 text-gray-400">status</th>
-                  <th className="text-left py-3 px-4 text-gray-400">current price</th>
-                  <th className="text-left py-3 px-4 text-gray-400">volume (24h)</th>
-                  <th className="text-left py-3 px-4 text-gray-400">days of data</th>
-                  <th className="text-right py-3 px-4 text-gray-400">action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {statsLoading ? (
-                  Array(5).fill(0).map((_, i) => (
-                    <tr key={i} className="border-b border-gray-700">
-                      <td colSpan={7} className="py-3 px-4"><Skeleton className="h-6 bg-gray-700" /></td>
-                    </tr>
-                  ))
-                ) : stats?.recent_tokens?.length ? (
-                  stats.recent_tokens.map((token) => (
-                    <tr
-                      key={token.mint_address}
-                      className={`border-b border-gray-700 hover:bg-gray-700/50 transition-colors`}
-                    >
-                      <td className="py-3 px-4 font-mono text-xs text-gray-300">
-                        {token.mint_address.substring(0, 8)}...{token.mint_address.substring(token.mint_address.length - 8)}
-                      </td>
-                      <td className="py-3 px-4 text-gray-300">{new Date(token.last_updated).toLocaleDateString()}</td>
-                      <td className="py-3 px-4">
-                        <span className={`inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ${token.is_pre_peak
-                          ? "bg-green-900/60 text-green-300 border border-green-500/30"
-                          : "bg-red-900/60 text-red-300 border border-red-500/30"
-                          }`}>
-                          {token.is_pre_peak ? "pre-pump" : "post-pump"}
-                        </span>
-                      </td>
-                      <td className="py-3 px-4 text-gray-300">${token.current_price.toFixed(6)}</td>
-                      <td className="py-3 px-4 text-gray-300">${formatNumber(token.volume_24h)}</td>
-                      <td className="py-3 px-4 text-gray-300">{token.days_of_data}</td>
-                      <td className="py-3 px-4 text-right">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => {
-                            setMintAddress(token.mint_address);
-                            analyzeToken(token.mint_address);
-                          }}
-                          className="bg-transparent border-gray-600 hover:bg-gray-700 text-gray-300"
-                        >
-                          view
-                        </Button>
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan={7} className="py-8 text-center">
-                      <div className="flex flex-col items-center justify-center text-gray-500">
-                        <AlertCircle className="h-8 w-8 mb-2" />
-                        <p>no tokens found in database</p>
-                      </div>
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
+          {/* Recent tokens - Using our new RecentTokensSection component */}
+          <RecentTokensSection 
+            tokens={stats?.recent_tokens} 
+            loading={statsLoading} 
+            analyzeToken={analyzeToken} 
+          />
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="w-full mt-20 py-6 bg-stone-900 text-gray-400">
+      <footer className="w-full mt-12 md:mt-20 py-6 bg-stone-900 text-gray-400">
         <div className="container px-4 max-w-5xl mx-auto text-center">
           <p className="text-sm">
             has it pumped yet? - solana token analysis tool
@@ -545,18 +369,12 @@ export default function Home() {
           color: #fff;
         }
         
-        .highlight-card {
-          position: relative;
-        }
-        
-        @keyframes flashBorder {
-          0% { border-color: rgba(245, 158, 11, 0); }
-          50% { border-color: rgba(245, 158, 11, 1); }
-          100% { border-color: rgba(245, 158, 11, 0); }
-        }
-        
-        .highlight-row {
-          animation: flashBorder 2s ease-in-out;
+        @media (max-width: 640px) {
+          /* Additional mobile-specific styles */
+          .container {
+            padding-left: 12px;
+            padding-right: 12px;
+          }
         }
       `}</style>
     </div>
