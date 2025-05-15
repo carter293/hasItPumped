@@ -1,15 +1,15 @@
+import { Link as Llink } from "lucide-react"
 import Image from 'next/image'
 import Link from "next/link"
 import { TokenMetadata, TokenResponse } from "@/app/page"
 import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Link as Llink } from "lucide-react"
 
-interface props {
+interface CoinInfoProps {
     activeToken: TokenResponse
     metadata: TokenMetadata
 }
 
-export const CoinInfo = ({ activeToken, metadata }: props) => {
+export const CoinInfo = ({ activeToken, metadata }: CoinInfoProps) => {
     return (
         <CardHeader>
             <div className="flex justify-between items-center">
@@ -39,4 +39,4 @@ export const CoinInfo = ({ activeToken, metadata }: props) => {
             </div>
         </CardHeader>
     )
-} 
+}

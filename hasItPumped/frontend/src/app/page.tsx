@@ -23,6 +23,16 @@ interface TokenDataPoint {
   close: number
   volume: number
 }
+// Format large numbers with K, M suffixes
+export const formatNumber = (num: number) => {
+  if (num >= 1000000) {
+    return (num / 1000000).toFixed(1) + 'M'
+  }
+  if (num >= 1000) {
+    return (num / 1000).toFixed(1) + 'K'
+  }
+  return num.toFixed(2)
+}
 
 export interface TokenResponse {
   mint_address: string
@@ -77,7 +87,7 @@ interface GeckoMetadataResponse {
   },
 }
 
-interface TokenSummary {
+export interface TokenSummary {
   mint_address: string
   last_updated: string
   is_pre_peak: boolean
@@ -86,7 +96,7 @@ interface TokenSummary {
   volume_24h: number
 }
 
-interface DatabaseStats {
+export interface DatabaseStats {
   total_tokens: number
   pre_peak_count: number
   post_peak_count: number
@@ -163,16 +173,7 @@ export default function Home() {
     }
   }
 
-  // Format large numbers with K, M suffixes
-  const formatNumber = (num: number) => {
-    if (num >= 1000000) {
-      return (num / 1000000).toFixed(1) + 'M'
-    }
-    if (num >= 1000) {
-      return (num / 1000).toFixed(1) + 'K'
-    }
-    return num.toFixed(2)
-  }
+
 
   useEffect(() => {
     async function loadTokenMetadata() {
@@ -259,7 +260,7 @@ export default function Home() {
       </section>
 
       <section className="w-full bg-stone-900">
-        <div className="container px-4 max-w-5xl mx-auto">
+        <div className="container px-6 max-w-5xl mx-auto">
 
           {/* Token Analysis Result */}
           <div ref={resultRef}>
