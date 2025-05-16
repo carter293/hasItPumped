@@ -9,6 +9,7 @@ jobs:
   test:
     name: Run FastAPI Tests
     runs-on: ubuntu-latest
+    # Remove the slim container and use the standard runner
     defaults:
       run:
         working-directory: ./hasItPumped/backend
@@ -20,28 +21,28 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
+          cache: 'pip'
 
-      - name: Cache Poetry dependencies
+      - name: Cache Poetry and dependencies
         uses: actions/cache@v3
         with:
           path: |
             ~/.cache/pypoetry
-            # If using in-project virtualenv
             .venv
-          key: ${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}
+          key: ${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('**/pyproject.toml') }}
           restore-keys: |
             ${{ runner.os }}-poetry-
 
-      - name: Install Poetry and configure
+      - name: Install Poetry
         run: |
-          pip install poetry
-          poetry config virtualenvs.create false
+          pip install poetry==1.7.1
+          poetry config virtualenvs.in-project true
 
       - name: Install dependencies
         run: poetry install --no-interaction --no-ansi
 
       - name: Run tests
-        run: poetry run pytest
+        run: poetry run pytest -xvs --no-header
 
   deploy:
     name: Deploy FastAPI
