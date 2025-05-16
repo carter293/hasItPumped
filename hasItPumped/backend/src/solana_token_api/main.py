@@ -142,6 +142,7 @@ async def analyze_token(
     # Calculate missing days
     if latest_local_date is None:
         missing_days = 300  # First-time back-fill
+        existing_days = 0
     else:
         missing_days = max(0, (today_utc - latest_local_date).days - 1)
         existing_days = max(0, (latest_local_date - earliest_local_date).days - 1)
