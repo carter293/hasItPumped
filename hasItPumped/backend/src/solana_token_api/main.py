@@ -139,6 +139,7 @@ async def analyze_token(
     earliest_local_date = existing_rows[-1].date if existing_rows else None
     today_utc = datetime.now(timezone.utc).date()
 
+
     # Calculate missing days
     if latest_local_date is None:
         missing_days = 300  # First-time back-fill
