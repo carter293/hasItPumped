@@ -90,10 +90,11 @@ poetry install
 cp .env.example .env
 # Edit .env with your API keys (BitQuery API)
 
+# Setup local dev DB (one off)
+poetry run python src/solana_token_api/initialise_local_dev_db.py
+
 # Run the backend service
 poetry run python run.py
-# Or
-python src/solana_token_api/main.py
 ```
 
 ### Frontend Setup
