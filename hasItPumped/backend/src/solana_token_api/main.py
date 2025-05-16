@@ -68,7 +68,7 @@ app.add_middleware(
 
 @app.get("/healthcheck")
 @limiter.limit("20/minute")
-async def read_root(request: Request):
+def read_root(request: Request):
     """API health check endpoint"""
     return {"status": "healthy", "message": "Solana Token Analysis API"}
 
@@ -119,12 +119,13 @@ def get_stats(request: Request, db: Session = Depends(get_db)):
 @app.post("/analyze_token", response_model=TokenResponse)
 @limiter.limit("20/minute")
 async def analyze_token(
-    request: TokenRequest,
+    request: Request,
+    token_request: TokenRequest,
     background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
 ):
     """Analyze token price data and determine if it's pre or post peak"""
-    mint_address = request.mint_address
+    mint_address = token_request.mint_address
     logger.info(f"Analyzing token: {mint_address}")
 
     # Get existing data

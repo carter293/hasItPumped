@@ -67,8 +67,7 @@ jobs:
       - name: Set Backend URL
         id: set-url
         run: |
-          # Replace 'your-fastapi-backend' with your actual service name on Render
-          echo "backend_url=https://your-fastapi-backend.onrender.com" >> $GITHUB_OUTPUT
+          echo "backend_url=https://fraudbuster-rug-pull-detector.onrender.com" >> $GITHUB_OUTPUT
 
   deploy:
     name: Deploy Frontend to Vercel
