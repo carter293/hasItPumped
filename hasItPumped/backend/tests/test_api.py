@@ -110,7 +110,7 @@ def insert_sample_data(db_session, token_data, days=5):
 # Test 1: Root endpoint
 def test_root_endpoint():
     """Test the root endpoint"""
-    response = client.get("/")
+    response = client.get("/healthcheck")
     assert response.status_code == 200
     assert "status" in response.json()
     assert "message" in response.json()

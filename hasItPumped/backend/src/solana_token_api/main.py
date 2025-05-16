@@ -76,8 +76,8 @@ def get_stats(db: Session = Depends(get_db)):
     total_tokens = len(latest_tokens)
 
     # Count pre/post peak
-    pre_peak_count = sum(1 for token in latest_tokens if token.is_pre_peak == "1")
-    post_peak_count = sum(1 for token in latest_tokens if token.is_pre_peak == "0")
+    pre_peak_count = sum(1 for token in latest_tokens if token.is_pre_peak == True)
+    post_peak_count = sum(1 for token in latest_tokens if token.is_pre_peak == False)
 
     # Get 10 most recent tokens
     recent_tokens = []
