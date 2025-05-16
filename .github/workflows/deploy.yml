@@ -44,16 +44,71 @@ jobs:
       - name: Run tests
         run: poetry run pytest -xvs --no-header
 
-  deploy:
+  deploy-backend:
     name: Deploy FastAPI
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./hasItPumped/backend
-    needs: test
+    # needs: test
+    outputs:
+      backend_url: ${{ steps.set-url.outputs.backend_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --remote-only
+      # - run: flyctl deploy --remote-only
+      #   env:
+      #     FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+      - name: Set Backend URL
+        id: set-url
+        run: |
+          BACKEND_URL=$(flyctl status --json | jq -r '.Hostname')
+          echo "backend_url=https://$BACKEND_URL" >> $GITHUB_OUTPUT
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+  deploy:
+    name: Deploy Frontend to Vercel
+    needs: deploy-backend 
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./hasItPumped/frontend 
+        
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+    
+      - name: Create .env file with backend URL
+        run: |
+          echo "NEXT_PUBLIC_API_URL=${{ needs.deploy-backend.outputs.backend_url }}" > .env
+    
+      - name: Pull Vercel Environment Information
+        run: |
+          if [[ $GITHUB_REF == refs/heads/main ]]; then
+            vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+          else
+            vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+          fi
+          
+      - name: Build Project Artifacts
+        run: |
+          if [[ $GITHUB_REF == refs/heads/main ]]; then
+            vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+          else
+            vercel build --token=${{ secrets.VERCEL_TOKEN }}
+          fi
+        env:
+          NEXT_PUBLIC_API_URL: ${{ needs.deploy-backend.outputs.backend_url }}
+          
+      - name: Deploy Project Artifacts to Vercel
+        run: |
+          if [[ $GITHUB_REF == refs/heads/main ]]; then
+            DEPLOYMENT_URL=$(vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})
+            echo "Production deployment: $DEPLOYMENT_URL"
+          else
+            DEPLOYMENT_URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})
+            echo "Preview deployment: $DEPLOYMENT_URL"
+          fi

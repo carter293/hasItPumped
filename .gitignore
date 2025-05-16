@@ -4,3 +4,4 @@ hasItPumped/backend/.env
 **/*.pyc
 **/*.log
 **/*.db
+.env

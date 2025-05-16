@@ -34,7 +34,7 @@ export default function GeckoChart({ poolAddress }: Props) {
 
   const src = `https://www.geckoterminal.com/solana/pools/${poolAddress}` +
               `?embed=1&info=0&swaps=0&grayscale=0&light_chart=0` +
-              `&chart_type=price&resolution=15m&theme=dark`;
+              `&chart_type=price&resolution=1d&theme=dark`;
 
   return (
     <div className="w-full overflow-hidden rounded-lg border border-gray-700">
