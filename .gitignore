@@ -5,3 +5,4 @@ hasItPumped/backend/.env
 **/*.log
 **/*.db
 .env
+./venv
