@@ -43,7 +43,7 @@ The backend is built with FastAPI and provides:
 - Database statistics via `/stats`
 - XGBoost machine learning model for peak prediction
 - Integration with BitQuery API for Solana DEX data
-- SQLite database for caching token data
+- Supabase database for caching token data (SQLite for local dev)
 
 ## 🚀 Features
 
