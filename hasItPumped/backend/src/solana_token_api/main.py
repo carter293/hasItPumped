@@ -136,6 +136,7 @@ async def analyze_token(
         .all()
     )
     latest_local_date = existing_rows[0].date if existing_rows else None
+    earliest_local_date = existing_rows[-1].date if existing_rows else None
     today_utc = datetime.now(timezone.utc).date()
 
     # Calculate missing days
@@ -143,8 +144,8 @@ async def analyze_token(
         missing_days = 300  # First-time back-fill
     else:
         missing_days = max(0, (today_utc - latest_local_date).days - 1)
+        existing_days = max(0, (latest_local_date - earliest_local_date).days - 1)
 
-    # Fetch new data if necessary
     token_data = []
     if missing_days > 0:
         logger.info(f"Fetching last {missing_days} day(s) for {mint_address}")
@@ -155,7 +156,10 @@ async def analyze_token(
             rows = api_data["data"]["Solana"]["DEXTradeByTokens"]
             if not rows:
                 raise HTTPException(404, "No data returned by BitQuery API")
-
+            
+            if existing_days + len(rows) <= 3:
+                raise IndexError("Not enough data (minimum 3 days required)")
+        
             for day in rows:
                 date_str = day["Block"]["Timefield"]
                 pk = f"{mint_address}_{date_str}"

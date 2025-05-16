@@ -46,28 +46,62 @@ jobs:
   deploy-backend:
     name: Deploy FastAPI to Render
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./hasItPumped/backend
     # needs: test
     outputs:
       backend_url: ${{ steps.set-url.outputs.backend_url }}
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Trigger Render Deployment
+      - name: Cache Render CLI
+        id: cache-render-cli
+        uses: actions/cache@v3
+        with:
+          path: /usr/local/bin/render
+          key: ${{ runner.os }}-render-cli-v1.1.0
+          
+      - name: Install Render CLI
+        if: steps.cache-render-cli.outputs.cache-hit != 'true'
         run: |
-          curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
-      
-      - name: Wait for deployment to complete
+          curl -L https://github.com/render-oss/cli/releases/download/v1.1.0/cli_1.1.0_linux_amd64.zip -o render.zip
+          unzip render.zip
+          sudo mv cli_v1.1.0 /usr/local/bin/render
+          chmod +x /usr/local/bin/render
+
+      - name: Verify Render CLI Installation
         run: |
-          echo "Waiting for Render deployment to complete..."
-          sleep 60  # Wait for deployment to start and make progress
-      
-      - name: Set Backend URL
+          render --version
+
+      - name: Trigger deploy with Render CLI
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_WORKSPACE: ${{ secrets.RENDER_WORKSPACE }}
+          CI: true
+        run: |
+          # Trigger deployment and store the response
+          DEPLOY_INFO=$(render deploys create ${{ secrets.RENDER_SERVICE_ID }} --wait --output json --confirm)
+          echo "Deploy triggered successfully"
+          
+          # Extract and output deploy ID
+          DEPLOY_ID=$(echo $DEPLOY_INFO | jq -r '.id')
+          echo "Deploy ID: $DEPLOY_ID"
+          
+          # Check if the deployment was successful
+          DEPLOY_STATUS=$(echo $DEPLOY_INFO | jq -r '.status')
+          if [ "$DEPLOY_STATUS" != "live" ]; then
+            echo "Deployment failed with status: $DEPLOY_STATUS"
+            exit 1
+          fi
+          
+          echo "Deployment completed successfully!"
+
+      - name: Get Service Details
         id: set-url
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_WORKSPACE: ${{ secrets.RENDER_WORKSPACE }}
         run: |
-          echo "backend_url=https://fraudbuster-rug-pull-detector.onrender.com" >> $GITHUB_OUTPUT
+          SERVICE_JSON=$(render services --output json --confirm)
+          SERVICE_URL=$(echo "$SERVICE_JSON" | jq -r ".[] | select(.service.id==\"${{ secrets.RENDER_SERVICE_ID }}\") | .service.serviceDetails.url")
+          echo "Service URL: $SERVICE_URL"
+          echo "backend_url=$SERVICE_URL" >> $GITHUB_OUTPUT
 
   deploy:
     name: Deploy Frontend to Vercel
