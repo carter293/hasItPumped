@@ -46,5 +46,3 @@ target-version = ["py39", "py310", "py311"]
 profile = "black"
 multi_line_output = 3
 
-[tool.poetry.requires-plugins]
-poetry-plugin-export = ">=1.8"
