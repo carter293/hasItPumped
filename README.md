@@ -5,16 +5,16 @@
 
 ## Clean up 
 - Check if pre/post pump prediction is made from last data point 
-- Clean up python routing into chunked files
-- Introduce testing into fast api and nextjs
-- image size ? 
-- footer background color
-- loading flash ? 
+x - Clean up python routing into chunked files
+x - Introduce testing into fast api and nextjs
+x - image size ? 
+x - footer background color
+x - loading flash ? 
 
 
 ## Hosting 
-- dockerising ? 
-- hosting fastapi and nextjs separately ? 
+x - dockerising ? 
+x - hosting fastapi and nextjs separately ? 
 - ? 
 
 ## Launching 
