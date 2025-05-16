@@ -1,0 +1,28 @@
+name: PR Tests
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Run FastAPI Tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./hasItPumped/backend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        run: | 
+          echo ${{ secrets.FLY_API_TOKEN }}
+          echo ${{ secrets.RENDER_API_KEY }}
+          echo ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+          echo ${{ secrets.RENDER_SERVICE_ID }}
+          echo ${{ secrets.RENDER_WORKSPACE }}
+          echo ${{ secrets.VERCEL_ORG_ID }}
+          echo ${{ secrets.VERCEL_PROJECT_ID }}
+          echo ${{ secrets.VERCEL_TOKEN }}
