@@ -24,17 +24,6 @@ interface TokenDataPoint {
   close: number
   volume: number
 }
-// Format large numbers with K, M suffixes
-export const formatNumber = (num: number) => {
-  if (num >= 1000000) {
-    return (num / 1000000).toFixed(1) + 'M'
-  }
-  if (num >= 1000) {
-    return (num / 1000).toFixed(1) + 'K'
-  }
-  return num.toFixed(2)
-}
-
 export interface TokenResponse {
   mint_address: string
   data: TokenDataPoint[]

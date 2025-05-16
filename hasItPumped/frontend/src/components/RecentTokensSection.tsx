@@ -1,4 +1,4 @@
-import { formatNumber, TokenSummary } from "@/app/page";
+import { TokenSummary } from "@/app/page";
 import { Skeleton } from "./ui/skeleton";
 import { Button } from "./ui/button";
 import { AlertCircle } from "lucide-react";
@@ -8,6 +8,18 @@ interface RecentTokensSectionProps {
   loading: boolean;
   analyzeToken: (address: string) => Promise<void>;
 }
+
+const formatNumber = (num: number) => {
+  if (num >= 1000000) {
+    return (num / 1000000).toFixed(1) + 'M'
+  }
+  if (num >= 1000) {
+    return (num / 1000).toFixed(1) + 'K'
+  }
+  return num.toFixed(2)
+}
+
+
 // This component will replace the Recent Tokens table in your Home component
 export const RecentTokensSection = ({ tokens, loading, analyzeToken }: RecentTokensSectionProps) => {
     return (
