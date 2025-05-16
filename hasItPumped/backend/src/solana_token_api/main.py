@@ -9,7 +9,7 @@ import logging
 from datetime import datetime, timezone
 from typing import List
 
-from fastapi import FastAPI, HTTPException, Depends, BackgroundTasks
+from fastapi import FastAPI, HTTPException, Depends, BackgroundTasks, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
@@ -34,6 +34,11 @@ from solana_token_api.utils.database_utils import (
     update_token_predictions,
 )
 from solana_token_api.utils.model_utils import load_model, make_prediction
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
+
+limiter = Limiter(key_func=get_remote_address)
 
 # Configure application logging
 logger = setup_logger("api")
@@ -48,6 +53,9 @@ app = FastAPI(
     version="1.0.0",
 )
 
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
@@ -59,13 +67,15 @@ app.add_middleware(
 
 
 @app.get("/healthcheck")
-def read_root():
+@limiter.limit("20/minute")
+async def read_root(request: Request):
     """API health check endpoint"""
     return {"status": "healthy", "message": "Solana Token Analysis API"}
 
 
 @app.get("/stats", response_model=DatabaseStats)
-def get_stats(db: Session = Depends(get_db)):
+@limiter.limit("20/minute")
+def get_stats(request: Request, db: Session = Depends(get_db)):
     """Get overall statistics of the database"""
     logger.info("Fetching database statistics")
 
@@ -107,6 +117,7 @@ def get_stats(db: Session = Depends(get_db)):
 
 
 @app.post("/analyze_token", response_model=TokenResponse)
+@limiter.limit("20/minute")
 async def analyze_token(
     request: TokenRequest,
     background_tasks: BackgroundTasks,

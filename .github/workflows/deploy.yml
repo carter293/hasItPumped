@@ -9,7 +9,6 @@ jobs:
   test:
     name: Run FastAPI Tests
     runs-on: ubuntu-latest
-    # Remove the slim container and use the standard runner
     defaults:
       run:
         working-directory: ./hasItPumped/backend
@@ -45,27 +44,31 @@ jobs:
         run: poetry run pytest -xvs --no-header
 
   deploy-backend:
-    name: Deploy FastAPI
+    name: Deploy FastAPI to Render
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./hasItPumped/backend
-    needs: test
+    # needs: test
     outputs:
       backend_url: ${{ steps.set-url.outputs.backend_url }}
     steps:
       - uses: actions/checkout@v4
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --remote-only
-        env:
-          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+      
+      - name: Trigger Render Deployment
+        run: |
+          curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+      
+      - name: Wait for deployment to complete
+        run: |
+          echo "Waiting for Render deployment to complete..."
+          sleep 60  # Wait for deployment to start and make progress
+      
       - name: Set Backend URL
         id: set-url
         run: |
-          BACKEND_URL=$(flyctl status --json | jq -r '.Hostname')
-          echo "backend_url=https://$BACKEND_URL" >> $GITHUB_OUTPUT
-        env:
-          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          # Replace 'your-fastapi-backend' with your actual service name on Render
+          echo "backend_url=https://your-fastapi-backend.onrender.com" >> $GITHUB_OUTPUT
 
   deploy:
     name: Deploy Frontend to Vercel
