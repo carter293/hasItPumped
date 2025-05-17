@@ -9,6 +9,7 @@ from pathlib import Path
 import pandas as pd
 import xgboost as xgb
 from fastapi import HTTPException
+from solana_token_api.utils.feature_engineering import features
 
 logger = logging.getLogger("api.model_utils")
 
@@ -57,18 +58,6 @@ def make_prediction(model: xgb.XGBClassifier, df: pd.DataFrame) -> Tuple[bool, f
     Returns:
         Tuple of (is_pre_peak, confidence)
     """
-    # Features required by the model
-    features = [
-        "price_change",
-        "volatility",
-        "rolling_mean",
-        "rolling_volume",
-        "days_since_launch",
-        "lag_close_1",
-        "lag_volume_1",
-        "sma7_minus_sma21",
-        "ret_21d",
-    ]
 
     # Handle missing values
     X = df[features].fillna(0)
