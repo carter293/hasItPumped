@@ -6,8 +6,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
-    name: Run FastAPI Tests
+  fastapi-unit-test:
+    name: Run FastAPI Unit Tests
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -43,11 +43,123 @@ jobs:
       - name: Run tests
         run: poetry run pytest -xvs --no-header
 
-  deploy-backend:
-    name: Deploy FastAPI to Render
+  dev-backend-deploy:
+    name: Dev Deploy FastAPI Backend to Render
+    environment: dev
+    runs-on: ubuntu-latest
+    # needs: fastapi-unit-test
+    outputs:
+      backend_url: ${{ steps.set-url.outputs.backend_url }}
+    steps:
+      - name: Cache Render CLI
+        id: cache-render-cli
+        uses: actions/cache@v3
+        with:
+          path: /usr/local/bin/render
+          key: ${{ runner.os }}-render-cli-v1.1.0
+          
+      - name: Install Render CLI
+        if: steps.cache-render-cli.outputs.cache-hit != 'true'
+        run: |
+          curl -L https://github.com/render-oss/cli/releases/download/v1.1.0/cli_1.1.0_linux_amd64.zip -o render.zip
+          unzip render.zip
+          sudo mv cli_v1.1.0 /usr/local/bin/render
+          chmod +x /usr/local/bin/render
+
+      - name: Verify Render CLI Installation
+        run: |
+          render --version
+      
+      - name: Trigger deploy with Render CLI
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_WORKSPACE: ${{ secrets.RENDER_WORKSPACE }}
+          CI: true
+        run: |
+          # Trigger deployment and store the response
+          DEPLOY_INFO=$(render deploys create ${{ secrets.RENDER_SERVICE_ID }} --wait --output json --confirm)
+          echo "Deploy triggered successfully"
+          
+          # Extract and output deploy ID
+          DEPLOY_ID=$(echo $DEPLOY_INFO | jq -r '.id')
+          echo "Deploy ID: $DEPLOY_ID"
+          
+          # Check if the deployment was successful
+          DEPLOY_STATUS=$(echo $DEPLOY_INFO | jq -r '.status')
+          if [ "$DEPLOY_STATUS" != "live" ]; then
+            echo "Deployment failed with status: $DEPLOY_STATUS"
+            exit 1
+          fi
+          
+          echo "Deployment completed successfully!"
+
+      - name: Get Service Details
+        id: set-url
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_WORKSPACE: ${{ secrets.RENDER_WORKSPACE }}
+        run: |
+          SERVICE_JSON=$(render services --output json --confirm)
+          SERVICE_URL=$(echo "$SERVICE_JSON" | jq -r ".[] | select(.service.id==\"${{ secrets.RENDER_SERVICE_ID }}\") | .service.serviceDetails.url")
+          echo "Service URL: $SERVICE_URL"
+          echo "backend_url=$SERVICE_URL" >> $GITHUB_OUTPUT
+
+  dev-frontend-deploy:
+    name: Dev Deploy Frontend to Vercel
+    environment: dev
+    needs: dev-backend-deploy
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./hasItPumped/frontend 
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+    
+      - name: Create .env file with backend URL
+        run: |
+          echo "NEXT_PUBLIC_API_URL=${{ needs.deploy-backend.outputs.backend_url }}" > .env
+      
+      - name: Create Vercel configuration
+        run: |
+          mkdir -p .vercel
+          echo '{"orgId":"${{ secrets.VERCEL_ORG_ID }}","projectId":"${{ secrets.VERCEL_PROJECT_ID }}"}' > .vercel/project.json
+    
+      - name: Pull Vercel Environment Information
+        run: |
+          if [[ $GITHUB_REF == refs/heads/main ]]; then
+            vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+          else
+            vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+          fi
+          
+      - name: Build Project Artifacts
+        run: |
+          if [[ $GITHUB_REF == refs/heads/main ]]; then
+            vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+          else
+            vercel build --token=${{ secrets.VERCEL_TOKEN }}
+          fi
+        env:
+          NEXT_PUBLIC_API_URL: ${{ needs.deploy-backend.outputs.backend_url }}
+          
+      - name: Deploy Project Artifacts to Vercel
+        run: |
+          if [[ $GITHUB_REF == refs/heads/main ]]; then
+            DEPLOYMENT_URL=$(vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})
+            echo "Production deployment: $DEPLOYMENT_URL"
+          else
+            DEPLOYMENT_URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})
+            echo "Preview deployment: $DEPLOYMENT_URL"
+          fi
+
+  prod-backend-deploy:
+    name: Prod Deploy FastAPI Backend to Render
     environment: prod
     runs-on: ubuntu-latest
-    needs: test
+    needs: dev-frontend-deploy
     outputs:
       backend_url: ${{ steps.set-url.outputs.backend_url }}
     steps:
@@ -104,15 +216,14 @@ jobs:
           echo "Service URL: $SERVICE_URL"
           echo "backend_url=$SERVICE_URL" >> $GITHUB_OUTPUT
 
-  deploy:
-    name: Deploy Frontend to Vercel
+  prod-frontend-deploy:
+    name: Prod Deploy Frontend to Vercel
     environment: prod
-    needs: deploy-backend 
+    needs: prod-backend-deploy
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./hasItPumped/frontend 
-        
     steps:
       - uses: actions/checkout@v4
       
@@ -122,6 +233,11 @@ jobs:
       - name: Create .env file with backend URL
         run: |
           echo "NEXT_PUBLIC_API_URL=${{ needs.deploy-backend.outputs.backend_url }}" > .env
+      
+      - name: Create Vercel configuration
+        run: |
+          mkdir -p .vercel
+          echo '{"orgId":"${{ secrets.VERCEL_ORG_ID }}","projectId":"${{ secrets.VERCEL_PROJECT_ID }}"}' > .vercel/project.json
     
       - name: Pull Vercel Environment Information
         run: |
