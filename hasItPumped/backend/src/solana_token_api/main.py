@@ -4,39 +4,39 @@ Solana Token Analysis API
 Main application module with FastAPI endpoints.
 """
 
-import os
 import logging
+import os
 from datetime import datetime, timezone
 from typing import List
 
-from fastapi import FastAPI, HTTPException, Depends, BackgroundTasks, Request
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
-from sqlalchemy.orm import Session
 import pandas as pd
 import xgboost as xgb
+from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
+from slowapi.util import get_remote_address
+from sqlalchemy.orm import Session
 
 # Local imports
-from solana_token_api.models.database import get_db, TokenData
+from solana_token_api.models.database import TokenData, get_db
 from solana_token_api.models.schema import (
+    DatabaseStats,
+    PoolResponse,
+    TokenDataPoint,
     TokenRequest,
     TokenResponse,
-    TokenDataPoint,
-    DatabaseStats,
     TokenSummary,
-    PoolResponse,
 )
-from solana_token_api.utils.logger import setup_logger
 from solana_token_api.utils.data_fetcher import get_solana_dex_trade_data
-from solana_token_api.utils.feature_engineering import engineer_features
 from solana_token_api.utils.database_utils import (
     get_latest_tokens,
     update_token_predictions,
 )
+from solana_token_api.utils.feature_engineering import engineer_features
+from solana_token_api.utils.logger import setup_logger
 from solana_token_api.utils.model_utils import load_model, make_prediction
-from slowapi import Limiter, _rate_limit_exceeded_handler
-from slowapi.util import get_remote_address
-from slowapi.errors import RateLimitExceeded
 
 limiter = Limiter(key_func=get_remote_address)
 
@@ -86,13 +86,12 @@ def get_stats(request: Request, db: Session = Depends(get_db)):
     total_tokens = len(latest_tokens)
 
     # Count pre/post peak
-    pre_peak_count = sum(1 for token in latest_tokens if token.is_pre_peak == True)
-    post_peak_count = sum(1 for token in latest_tokens if token.is_pre_peak == False)
+    pre_peak_count = sum(1 for token in latest_tokens if token.is_pre_peak is True)
+    post_peak_count = sum(1 for token in latest_tokens if token.is_pre_peak is False)
 
     # Get 10 most recent tokens
     recent_tokens = []
     for token in latest_tokens[:10]:
-
         recent_tokens.append(
             TokenSummary(
                 mint_address=token.mint_address,
@@ -139,7 +138,6 @@ async def analyze_token(
     earliest_local_date = existing_rows[-1].date if existing_rows else None
     today_utc = datetime.now(timezone.utc).date()
 
-
     # Calculate missing days
     if latest_local_date is None:
         missing_days = 300  # First-time back-fill
@@ -158,10 +156,10 @@ async def analyze_token(
             rows = api_data["data"]["Solana"]["DEXTradeByTokens"]
             if not rows:
                 raise HTTPException(404, "No data returned by BitQuery API")
-            
+
             if existing_days + len(rows) <= 3:
                 raise IndexError("Not enough data (minimum 3 days required)")
-        
+
             for day in rows:
                 date_str = day["Block"]["Timefield"]
                 pk = f"{mint_address}_{date_str}"

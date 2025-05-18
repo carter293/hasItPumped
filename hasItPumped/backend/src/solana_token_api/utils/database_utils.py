@@ -8,8 +8,9 @@ from typing import List
 import pandas as pd
 from sqlalchemy import func
 from sqlalchemy.orm import Session
-from solana_token_api.models.schema import LatestTokenStats
+
 from solana_token_api.models.database import TokenData
+from solana_token_api.models.schema import LatestTokenStats
 
 logger = logging.getLogger("api.database_utils")
 
@@ -33,11 +34,8 @@ def get_latest_tokens(db: Session) -> List[LatestTokenStats]:
             order_by=[TokenData.created_at.desc(), TokenData.date.desc()],
         )
         .label("rn"),
-        
         func.count(TokenData.id)
-        .over(
-            partition_by=TokenData.mint_address
-        )
+        .over(partition_by=TokenData.mint_address)
         .label("days_of_data"),
     ).subquery()
 
@@ -50,9 +48,9 @@ def get_latest_tokens(db: Session) -> List[LatestTokenStats]:
         .all()
     )
 
-    latest_tokens = [] 
+    latest_tokens = []
     for token, days_of_data in result:
-        setattr(token, 'days_of_data', days_of_data)
+        setattr(token, "days_of_data", days_of_data)
         latest_tokens.append(token)
 
     logger.debug(f"Found {len(latest_tokens)} unique tokens in database")
@@ -94,7 +92,7 @@ def update_token_predictions(
 
             # Update record if found
             if db_record:
-                db_record.is_pre_peak = is_pre_peak
+                setattr(db_record, "is_pre_peak", is_pre_peak)
 
         # Commit all updates
         db_session.commit()

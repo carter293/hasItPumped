@@ -156,6 +156,20 @@ Response:
 4. Token metadata is fetched from GeckoTerminal
 5. Results are presented in the UI with visualizations
 
+
+## Pre-commit hooks (Backend only)
+This project uses pre-commit to automatically run checks like black, isort, and mypy before you commit code.
+✅ One-time setup (required)
+1. Install pre-commit (if you haven’t already):  
+  `pip install pre-commit`
+2. Install the Git hooks from the backend directory:  
+  ```bash
+  cd hasItPumped/backend
+  pre-commit install
+  ```
+3. (Optional but recommended) Run the hooks on all files to catch issues now:  
+  `pre-commit run --all-files`
+
 ## 📝 Note
 
 This tool provides analysis based on historical patterns and should not be considered financial advice. The model is trained on historical data patterns of Solana tokens and makes predictions based on these patterns.

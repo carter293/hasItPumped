@@ -4,11 +4,13 @@ Utilities for model loading and prediction.
 
 import logging
 import os
-from typing import Tuple
 from pathlib import Path
+from typing import Tuple
+
 import pandas as pd
 import xgboost as xgb
 from fastapi import HTTPException
+
 from solana_token_api.utils.feature_engineering import features
 
 logger = logging.getLogger("api.model_utils")

@@ -2,6 +2,7 @@
 Pydantic models for request/response validation and serialization.
 """
 
+from datetime import date
 from typing import Dict, List, Optional
 
 from pydantic import BaseModel, Field
@@ -10,11 +11,7 @@ from pydantic import BaseModel, Field
 class TokenRequest(BaseModel):
     """Request model for analyzing a token"""
 
-    mint_address: str = Field(
-        ...,
-        description="Solana token mint address",
-        example="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-    )
+    mint_address: str = Field(description="Solana token mint address")
 
 
 class TokenDataPoint(BaseModel):
@@ -30,10 +27,12 @@ class TokenDataPoint(BaseModel):
 
 class LatestTokenStats(TokenDataPoint):
     """Response model for latest token statitics"""
+
     mint_address: str
-    created_at: str
+    created_at: date
     is_pre_peak: bool
     days_of_data: int
+
 
 class PoolResponse(BaseModel):
     """Response model for pool information"""
