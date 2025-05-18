@@ -12,11 +12,20 @@ logger = logging.getLogger("api.feature_engineering")
 
 # Features required by the model
 features = [
-        'price_change', 'volatility', 'rolling_mean', 'rolling_volume', 
-        'close_to_high', 'pct_from_past_max', 'drawdown',
-        'days_since_launch', 'lag_close_1', 'lag_volume_1', 
-        'sma7_minus_sma21', 'ret_21d'
-    ]
+    "price_change",
+    "volatility",
+    "rolling_mean",
+    "rolling_volume",
+    "close_to_high",
+    "pct_from_past_max",
+    "drawdown",
+    "days_since_launch",
+    "lag_close_1",
+    "lag_volume_1",
+    "sma7_minus_sma21",
+    "ret_21d",
+]
+
 
 def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -85,16 +94,16 @@ def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
     df["lag_volume_1"] = df["volume"].shift(1)
 
     # Relative price metrics
-    df['close_to_high'] = df['close'] / df['high'].cummax()
-    df['days_since_launch'] = range(1, len(df) + 1)
-    df['past_max_21d'] = df['close'].transform(
+    df["close_to_high"] = df["close"] / df["high"].cummax()
+    df["days_since_launch"] = range(1, len(df) + 1)
+    df["past_max_21d"] = df["close"].transform(
         lambda x: x.shift(1).rolling(21, min_periods=1).max()
     )
-    df['pct_from_past_max'] = df['close'] / df['past_max_21d'] - 1
+    df["pct_from_past_max"] = df["close"] / df["past_max_21d"] - 1
 
     # drawdown vs. 1-week high
-    df['max21d']   = df['close'].rolling(21, min_periods=1).max()
-    df['drawdown'] = df['close'] / df['max21d'] - 1
+    df["max21d"] = df["close"].rolling(21, min_periods=1).max()
+    df["drawdown"] = df["close"] / df["max21d"] - 1
 
     # Check for missing values
     for feature in features:

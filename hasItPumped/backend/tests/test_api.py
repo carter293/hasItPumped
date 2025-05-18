@@ -3,12 +3,15 @@ Test suite for the Solana Token Analysis API endpoints.
 """
 import os
 import sys
-import pytest
 from datetime import datetime, timedelta, timezone
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
+
+import pytest
 
 # Add src directory to Python path for imports
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
+sys.path.insert(
+    0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src"))
+)
 
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
@@ -21,18 +24,18 @@ from solana_token_api.models.database import Base, TokenData, get_db
 # Create in-memory database for testing
 TEST_DB_URL = "sqlite:///:memory:"
 
+
 # Setup function to create test database
 @pytest.fixture(scope="function")
 def test_db():
     """Create an in-memory test database for each test"""
     import logging
+
     logger = logging.getLogger(__name__)
     logger.debug("[FIXTURE] Setting up test_db")
 
     engine = create_engine(
-        TEST_DB_URL,
-        connect_args={"check_same_thread": False},
-        poolclass=StaticPool
+        TEST_DB_URL, connect_args={"check_same_thread": False}, poolclass=StaticPool
     )
     logger.debug(f"[FIXTURE] Engine: {engine}")
 
@@ -40,6 +43,7 @@ def test_db():
     logger.debug("[FIXTURE] Tables created")
 
     from sqlalchemy import inspect
+
     inspector = inspect(engine)
     logger.debug(f"[FIXTURE] Tables: {inspector.get_table_names()}")
 
@@ -61,8 +65,11 @@ def test_db():
     yield TestingSessionLocal
     Base.metadata.drop_all(bind=engine)
     logger.debug("[FIXTURE] Dropped tables")
+
+
 # Create test client
 client = TestClient(app=app)
+
 
 @pytest.fixture
 def sample_token_data():
@@ -81,10 +88,10 @@ def sample_token_data():
 def insert_sample_data(db_session, token_data, days=5):
     """Insert sample token data into the test database"""
     today = datetime.now(timezone.utc).date()
-    
+
     inserted_dates = []
     for i in range(days):
-        date = today - timedelta(days=i+10)  # Create data for dates in the past
+        date = today - timedelta(days=i + 10)  # Create data for dates in the past
         inserted_dates.append(date)
         close_price = token_data["close"] * (1 + (i * 0.05))
 
@@ -150,7 +157,7 @@ def test_analyze_token_success(mock_get_data, test_db, sample_token_data):
     db = test_db()
     insert_sample_data(db, sample_token_data, days=5)
     db.close()
-    
+
     # Mock API response with valid data structure
     mock_date = datetime.now(timezone.utc)
     mock_response = {
@@ -158,9 +165,7 @@ def test_analyze_token_success(mock_get_data, test_db, sample_token_data):
             "Solana": {
                 "DEXTradeByTokens": [
                     {
-                        "Block": {
-                            "Timefield": mock_date.strftime("%Y-%m-%dT%H:%M:%S")
-                        },
+                        "Block": {"Timefield": mock_date.strftime("%Y-%m-%dT%H:%M:%S")},
                         "Trade": {"open": 1.0, "high": 1.2, "low": 0.9, "close": 1.1},
                         "volume": 1000.0,
                     }
@@ -171,19 +176,21 @@ def test_analyze_token_success(mock_get_data, test_db, sample_token_data):
     mock_get_data.return_value = mock_response
 
     # Call API
-    response = client.post("/analyze_token", json={"mint_address": sample_token_data["mint_address"]})
-    
+    response = client.post(
+        "/analyze_token", json={"mint_address": sample_token_data["mint_address"]}
+    )
+
     # Verify response
     assert response.status_code == 200
     data = response.json()
-    
+
     # Verify structure
     assert data["mint_address"] == sample_token_data["mint_address"]
     assert "data" in data
     assert "is_pre_peak" in data
     assert "confidence" in data
     assert "days_of_data" in data
-    
+
     # Should have at least all the data we inserted
     assert data["days_of_data"] >= 5
     assert len(data["data"]) >= 5
@@ -192,7 +199,7 @@ def test_analyze_token_success(mock_get_data, test_db, sample_token_data):
 @patch("solana_token_api.main.get_solana_dex_trade_data")
 def test_analyze_token_api_only(mock_get_data, test_db):
     """Test token analysis with only API data (no DB data)"""
-    from datetime import datetime, timezone, timedelta
+    from datetime import datetime, timedelta, timezone
 
     # Create unique mint address
     unique_token = f"API_ONLY_TOKEN_{datetime.now().isoformat()}"
@@ -203,8 +210,9 @@ def test_analyze_token_api_only(mock_get_data, test_db):
         {
             "Block": {"Timefield": date.strftime("%Y-%m-%dT%H:%M:%S")},
             "Trade": {"open": 1.0, "high": 1.2, "low": 0.9, "close": 1.1},
-            "volume": 1000.0
-        } for date in mock_dates
+            "volume": 1000.0,
+        }
+        for date in mock_dates
     ]
     mock_response = {"data": {"Solana": {"DEXTradeByTokens": mock_data}}}
     mock_get_data.return_value = mock_response
@@ -230,13 +238,13 @@ def test_analyze_token_api_error(mock_get_data, test_db):
     """Test error handling when API throws an exception"""
     # Set up mock to raise an exception
     mock_get_data.side_effect = Exception("API error")
-    
+
     # Use a unique token address
     unique_token = f"ERROR_TEST_TOKEN_{datetime.now().isoformat()}"
-    
+
     # Call API
     response = client.post("/analyze_token", json={"mint_address": unique_token})
-    
+
     # Verify error response
     assert response.status_code == 503
     assert "detail" in response.json()
@@ -251,19 +259,17 @@ def test_analyze_token_empty_api_response(mock_get_data, test_db, sample_token_d
     db = test_db()
     insert_sample_data(db, sample_token_data, days=5)  # Enough data in DB
     db.close()
-    
+
     # Mock empty API response but with correct structure
     mock_get_data.return_value = {
-        "data": {
-            "Solana": {
-                "DEXTradeByTokens": []  # Empty list
-            }
-        }
+        "data": {"Solana": {"DEXTradeByTokens": []}}  # Empty list
     }
-    
+
     # Call API
-    response = client.post("/analyze_token", json={"mint_address": sample_token_data["mint_address"]})
-    
+    response = client.post(
+        "/analyze_token", json={"mint_address": sample_token_data["mint_address"]}
+    )
+
     # HTTP 404 is expected from API when no data returned, but we have DB data
     # This might be handled as 503 in your app's error handling
     # We need to check both possibilities
